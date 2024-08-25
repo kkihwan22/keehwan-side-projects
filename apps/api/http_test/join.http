@@ -1,0 +1,8 @@
+### ID/Password 로그인 테스트
+POST {{host}}/join
+Content-Type: application/json
+
+{
+  "email": "hopeman97@daum.net",
+  "password": "test1234"
+}

@@ -1,0 +1,3 @@
+### My
+GET {{host}}/api/v1/my
+Authorization: {{Authorization}}

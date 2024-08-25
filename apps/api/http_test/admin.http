@@ -1,0 +1,3 @@
+### My
+GET {{host}}/admin/v1/users
+Authorization: {{Authorization}}

@@ -1,0 +1,28 @@
+### ID/Password 로그인 테스트
+POST {{host}}/login
+Content-Type: application/json
+
+{
+  "email": "hopeman97@daum.net",
+  "password": "test1234"
+}
+
+> {%
+    client.global.set("Authorization", response.headers.valueOf("Authorization"));
+    client.log("access token : " + client.global.get("Authorization"));
+%}
+
+### 리프레쉬 토큰을 이용 토큰 재발급
+POST {{host}}/renew
+Content-Type: application/json
+
+{
+  "token": "eyJhbGciOiJIUzI1NiJ9.eyJ0eXBlIjoiUkVGUkVTSCIsInVzZXJuYW1lIjoidGVzdEB0ZXN0LmNvbSIsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzI0MDU1OTQyLCJleHAiOjE3MjY2NDc5NDJ9.GpOIsiodZns_QH0StB_gC5w6t0_lD4dx8aQJbleKVkE"
+}
+
+
+### 토큰을 expire 시킨다.
+POST {{host}}/logout
+Content-Type: application/json
+Authorization: {{Authorization}}
+
