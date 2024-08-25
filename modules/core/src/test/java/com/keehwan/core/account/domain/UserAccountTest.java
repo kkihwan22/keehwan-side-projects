@@ -30,7 +30,7 @@ class UserAccountTest {
 
         @BeforeEach
         void setUp() {
-            userAccount = new UserAccount("init@email.com", password);
+            userAccount = UserAccount.registerCredential("init@email.com", password);
         }
 
         @DisplayName("패스워드 불일치 시 - failureCount를 1증가시키고, false를 반환한다.")
@@ -96,7 +96,7 @@ class UserAccountTest {
 
         @BeforeEach
         void setUp() {
-            this.account = new UserAccount(username, password);
+            this.account = UserAccount.registerCredential(username, password);
         }
 
         @DisplayName("마지막 패스워드 변경 날짜가 오늘보다 90일 전이면 false를 반환한다.")
@@ -136,7 +136,7 @@ class UserAccountTest {
         @Test
         void case4() {
             // given
-            UserAccount account = new UserAccount(username, password);
+            UserAccount account = UserAccount.registerCredential(username, password);
             String message = "전달받은 패스워드가 null입니다.";
 
             // then
@@ -149,7 +149,7 @@ class UserAccountTest {
         @Test
         void case5() {
             // given
-            UserAccount account = new UserAccount(username, password);
+            UserAccount account = UserAccount.registerCredential(username, password);
 
             // when
             String changedPassword = "changedPassword";
