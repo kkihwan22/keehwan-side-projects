@@ -31,7 +31,7 @@ class UserAccountServiceTest {
     class CreateUserAccountTest {
         @BeforeEach
         void setUp() {
-            accountPersistenceAdapter.create(new UserAccount(email, password));
+            accountPersistenceAdapter.create(UserAccount.registerCredential(email, password));
         }
 
         @DisplayName("이미 등록된 email이 있다면 ")
@@ -48,7 +48,7 @@ class UserAccountServiceTest {
         void case2() throws Exception {
             String nonExistsEmail = "seconds@email.com";
 
-            UserAccount userAccount = accountPersistenceAdapter.create(new UserAccount(nonExistsEmail, password));
+            UserAccount userAccount = accountPersistenceAdapter.create(UserAccount.registerCredential(nonExistsEmail, password));
 
             assertAll(
                     () -> assertEquals(nonExistsEmail, userAccount.getUsername()),

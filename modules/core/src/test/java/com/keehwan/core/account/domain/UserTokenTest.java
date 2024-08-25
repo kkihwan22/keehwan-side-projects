@@ -13,7 +13,7 @@ class UserTokenTest {
     @BeforeEach
     void setUp() {
         // TODO: Fixture 분리
-        account = new UserAccount("test@test.com", null);
+        account = UserAccount.registerCredential("test@test.com", null);
     }
 
     @DisplayName("토큰이 생성된다.")

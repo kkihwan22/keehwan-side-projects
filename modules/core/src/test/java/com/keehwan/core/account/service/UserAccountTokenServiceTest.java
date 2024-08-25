@@ -40,7 +40,7 @@ public class UserAccountTokenServiceTest {
 
         @BeforeEach
         void setUp() {
-            account = new UserAccount(email, "1q2w3e4r");
+            account = UserAccount.registerCredential(email, "1q2w3e4r");
         }
 
         @DisplayName("로그인 시 생성된 refresh token을 저장한다.")
@@ -56,7 +56,7 @@ public class UserAccountTokenServiceTest {
 
         @BeforeEach
         void setUp() {
-            account = new UserAccount(email, "1q2w3e4r");
+            account = UserAccount.registerCredential(email, "1q2w3e4r");
             userAccountPersistenceAdapterStub.create(new UserToken(account, token));
         }
 
@@ -108,7 +108,7 @@ public class UserAccountTokenServiceTest {
 
         @BeforeEach
         void setUp() {
-            account = new UserAccount(email, "1q2w3e4r");
+            account = UserAccount.registerCredential(email, "1q2w3e4r");
             userAccountPersistenceAdapterStub.create(new UserToken(account, token));
         }
 
