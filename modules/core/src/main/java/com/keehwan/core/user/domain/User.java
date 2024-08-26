@@ -10,7 +10,6 @@ import java.util.List;
 public class User extends BaseCreatedAndUpdatedDateTime {
 
     private Long id;
-    private String name;
     private String nickname;
 
     private Birthday birthday;

@@ -3,6 +3,8 @@ POST {{host}}/join
 Content-Type: application/json
 
 {
-  "email": "hopeman97@daum.net",
-  "password": "test1234"
+  "username": "keehwan@weversecompany.com",
+  "nickname": "위버스커머스",
+  "password": "test1234",
+  "profileImage": null
 }

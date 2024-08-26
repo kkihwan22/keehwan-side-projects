@@ -1,6 +1,7 @@
 package com.keehwan.api.authentication.applications;
 
 import com.keehwan.api.authentication.exceptions.JwtExpireException;
+import com.keehwan.api.rest.dto.JoinDTO.JoinRequest;
 import com.keehwan.core.account.domain.UserAccount;
 import com.keehwan.core.account.domain.UserToken;
 import com.keehwan.core.account.domain.enums.UserRole;
@@ -30,8 +31,8 @@ public class AuthenticationApplication {
     private final BCryptPasswordEncoder passwordEncoder;
 
     @Transactional
-    public UserAccount createUserAccount(String username, String password) {
-        return createUserAccountUsecase.create(username, passwordEncoder.encode(password));
+    public UserAccount createUserAccount(JoinRequest request) {
+        return createUserAccountUsecase.create(request.toCommand());
     }
 
     @Transactional

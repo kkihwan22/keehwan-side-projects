@@ -37,7 +37,10 @@ public class UserAccount extends BaseCreatedAndUpdatedDateTime {
     private Long id;
 
     private String username;
+    private String nickname;
     private String password;
+    @Column(name = "profile_image")
+    private String profileImage;
 
     @Column(name = "credential_account")
     private boolean credentialAccount;
@@ -73,10 +76,12 @@ public class UserAccount extends BaseCreatedAndUpdatedDateTime {
     @Column(name = "password_last_changed_at")
     private LocalDateTime passwordLastChangedDateTime;
 
-    public static UserAccount registerCredential(String username, String password) {
+    public static UserAccount registerCredential(String username, String nickname, String password, String profileImage) {
         return UserAccount.builder()
                 .username(username)
+                .nickname(nickname)
                 .password(password)
+                .profileImage(profileImage)
                 .credentialAccount(true)
                 .socialAccount(false)
                 .roles(List.of(UserRole.USER))
@@ -84,12 +89,19 @@ public class UserAccount extends BaseCreatedAndUpdatedDateTime {
                 .build();
     }
 
-    public static UserAccount registerSocial(String username, SocialProvider socialLoginProvider, String providerId) {
+    public static UserAccount registerSocial(
+            String username,
+            String nickname,
+            String profileImage,
+            SocialProvider socialLoginProvider,
+            String providerId) {
         UserAccountVerification userAccountVerification = new UserAccountVerification();
         userAccountVerification.verify();
 
         return UserAccount.builder()
                 .username(username)
+                .nickname(nickname)
+                .profileImage(profileImage)
                 .password("rkAtkGkQslek.") // TODO: 난수
                 .credentialAccount(false)
                 .socialAccount(true)

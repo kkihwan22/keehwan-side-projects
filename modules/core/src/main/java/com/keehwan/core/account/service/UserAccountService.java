@@ -19,14 +19,15 @@ public class UserAccountService implements
     private final UserAccountPersistenceAdapter userAccountPersistenceAdapter;
 
     @Override
-    public @NotNull UserAccount create(@NotNull String email, @NotNull String password) {
-        UserAccount findAccount = userAccountPersistenceAdapter.findAccountByUsername(email).orElse(null);
+    public @NotNull UserAccount create(UserAccountCreateCommand command) {
+        UserAccount findAccount = userAccountPersistenceAdapter.findAccountByUsername(command.username())
+                .orElse(null);
 
         if (Objects.nonNull(findAccount)) {
             throw new UserAccountAlreadyExistsException();
         }
 
-        return userAccountPersistenceAdapter.create(UserAccount.registerCredential(email, password));
+        return userAccountPersistenceAdapter.create(command.toEntity());
     }
 
     @Override

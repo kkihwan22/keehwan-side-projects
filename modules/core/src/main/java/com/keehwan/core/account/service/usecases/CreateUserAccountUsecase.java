@@ -5,5 +5,12 @@ import org.jetbrains.annotations.NotNull;
 
 public interface CreateUserAccountUsecase {
 
-    @NotNull UserAccount create(@NotNull final String email, @NotNull final String password);
+    @NotNull UserAccount create(UserAccountCreateCommand command);
+
+    record UserAccountCreateCommand(String username, String nickname, String password, String profileImage) {
+
+        public UserAccount toEntity() {
+            return UserAccount.registerCredential(username, nickname, password, profileImage);
+        }
+    }
 }
