@@ -9,11 +9,10 @@ public interface Oauth2UserResponse {
     String provider();
     String providerId();
     String email();
-    String name();
+    String nickname();
+    String profileImage();
 
     // google의 경우 email verified 값도 전달해준다.
-
-
     record GoogleUserResponse(Map<String, Object> attribute) implements Oauth2UserResponse {
         @Override
         public String provider() {
@@ -31,8 +30,13 @@ public interface Oauth2UserResponse {
         }
 
         @Override
-        public String name() {
+        public String nickname() {
             return attribute.get("name").toString();
+        }
+
+        @Override
+        public String profileImage() {
+            return attribute.get("picture").toString();
         }
 
         public static GoogleUserResponse of(OAuth2User oauth2User) {
@@ -58,8 +62,13 @@ public interface Oauth2UserResponse {
         }
 
         @Override
-        public String name() {
+        public String nickname() {
             return attribute.get("name").toString();
+        }
+
+        @Override
+        public String profileImage() {
+            return attribute.get("profile_image").toString();
         }
 
         public static NaverOauth2UserResponse of(OAuth2User oauth2User) {

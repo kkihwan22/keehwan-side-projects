@@ -25,7 +25,7 @@ public class AuthenticationRestController implements BaseRestController {
 
     @PostMapping("/join")
     public ApiResponse<Void> join(@Valid @RequestBody JoinRequest request, BindingResult bindingResult) {
-        UserAccount account = authenticationApplication.createUserAccount(request.email(), request.password());
+        UserAccount account = authenticationApplication.createUserAccount(request);
         return ApiResponse.just(null);
     }
 
