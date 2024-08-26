@@ -2,7 +2,6 @@ package com.keehwan.api.rest;
 
 import com.keehwan.api.authentication.applications.AuthenticationApplication;
 import com.keehwan.api.rest.dto.ApiResponse;
-import com.keehwan.api.rest.dto.JoinDTO;
 import com.keehwan.api.share.BaseRestController;
 import com.keehwan.core.account.domain.UserAccount;
 import jakarta.validation.Valid;
@@ -16,6 +15,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import static com.keehwan.api.rest.dto.JoinDTO.JoinRequest;
+
 @RequiredArgsConstructor
 @RestController
 public class AuthenticationRestController implements BaseRestController {
@@ -23,7 +24,7 @@ public class AuthenticationRestController implements BaseRestController {
     private final AuthenticationApplication authenticationApplication;
 
     @PostMapping("/join")
-    public ApiResponse<Void> join(@Valid @RequestBody JoinDTO.JoinRequest request, BindingResult bindingResult) {
+    public ApiResponse<Void> join(@Valid @RequestBody JoinRequest request, BindingResult bindingResult) {
         UserAccount account = authenticationApplication.createUserAccount(request.email(), request.password());
         return ApiResponse.just(null);
     }
