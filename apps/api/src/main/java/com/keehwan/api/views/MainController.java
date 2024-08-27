@@ -1,9 +1,13 @@
 package com.keehwan.api.views;
 
+import com.keehwan.api.authentication.CustomPrincipalDetails;
+import com.keehwan.core.account.domain.UserAccount;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -11,16 +15,24 @@ public class MainController {
     private final Logger log = LoggerFactory.getLogger(MainController.class);
 
     @RequestMapping("/")
-    public String pageIndex(Model model) {
+    public String pageIndex(ModelMap model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
-//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//        String name = authentication.getName();
-//        CustomPrincipalDetails details = (CustomPrincipalDetails) authentication.getDetails();
-//        UserAccount account = details.getAccount();
-//
-//        model.addAttribute("name", name);
-//        model.addAttribute("account", account);
+        log.info("authentication: {}", authentication);
 
+        if (authentication.getDetails() instanceof CustomPrincipalDetails) {
+            // 로그인 된 사용자!!
+
+            CustomPrincipalDetails details = (CustomPrincipalDetails) authentication.getDetails();
+            String name = authentication.getName();
+            UserAccount account = details.getAccount();
+
+            log.info("username: {}, nickname: {}", name, account.getNickname());
+
+            model.addAttribute("username", name);
+            model.addAttribute("nickname", account.getNickname());
+            model.addAttribute("profileImage", account.getProfileImage());
+        }
         return "index";
     }
 

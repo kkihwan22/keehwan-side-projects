@@ -36,9 +36,15 @@ public class UserAccount extends BaseCreatedAndUpdatedDateTime {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String username;
+    @Column(name = "username")
+    private String username;  // email
+
+    @Column(name = "nickname")
     private String nickname;
+
+    @Column(name = "password")
     private String password;
+
     @Column(name = "profile_image")
     private String profileImage;
 
@@ -148,5 +154,17 @@ public class UserAccount extends BaseCreatedAndUpdatedDateTime {
 
     public boolean isEnabled() {
         return this.status == UserAccountStatus.ENABLED;
+    }
+
+    public void changeNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public void changeProfileImage(String profileImage) {
+        this.profileImage = profileImage;
+    }
+
+    public void deleteProfileImage() {
+        this.changeProfileImage(null);
     }
 }

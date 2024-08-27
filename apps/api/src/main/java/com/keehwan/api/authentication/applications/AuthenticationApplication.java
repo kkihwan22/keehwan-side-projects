@@ -32,7 +32,7 @@ public class AuthenticationApplication {
 
     @Transactional
     public UserAccount createUserAccount(JoinRequest request) {
-        return createUserAccountUsecase.create(request.toCommand());
+        return createUserAccountUsecase.create(request.toCommand(passwordEncoder));
     }
 
     @Transactional

@@ -1,1 +1,24 @@
-<h1>It's OK!</h1>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keehwan's side project!</title>
+</head>
+<body>
+    <h1> Hello World </h1>
+    {{#username}}
+    <div>
+        <h1>Welcome, {{nickname}}!</h1>
+        <img src="{{profileImage}}" alt="Profile Image">
+    </div>
+    {{/username}}
+
+    {{^username}}
+        <div>
+            <h1>Welcome, Guest!</h1>
+            <p>Please <a href="/pages/login-form">log in</a> to continue.</p>
+            <p>Please <a href="/pages/join-form">join</a> to continue.</p>
+        </div>
+    {{/username}}
+</body>
+</html>

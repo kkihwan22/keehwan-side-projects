@@ -22,7 +22,7 @@ public class BaseRestExceptionHandler {
     }
 
     @ExceptionHandler(value = {BaseRestException.class})
-    public ResponseEntity<ApiResponse<Void>> handleCommonInventoryHttpException(
+    public ResponseEntity<ApiResponse<Void>> handleCommonRestException(
             BaseRestException exception
     ) {
         return ResponseEntity.status(exception.getHttpStatus())
