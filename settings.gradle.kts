@@ -11,5 +11,6 @@ include(
     "apps:admin",
     "apps:batch",
     "modules:core",
-    "modules:persistence"
+    "modules:persistence",
+    "modules:infrastructure"
 )
