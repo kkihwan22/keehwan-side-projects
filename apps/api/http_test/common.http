@@ -1,0 +1,6 @@
+### File Upload
+POST {{host}}/api/v1/commons/presigned/upload
+Content-Type: application/json
+Authorization: {{Authorization}}
+
+

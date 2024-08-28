@@ -7,6 +7,7 @@ plugins {
 dependencies {
     implementation(project(":modules:core"))
     implementation(project(":modules:persistence"))
+    implementation(project(":modules:infrastructure"))
 
     implementation(Spring.boot.security)
     implementation(Spring.boot.oauth2Client)
