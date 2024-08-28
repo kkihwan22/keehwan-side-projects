@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+  localstack:
+    image: localstack/localstack:0.12.6 # 혹시나 자동 버전업으로 인한 오류를 막기위해 tag 명시
+    container_name: localstack
+    ports:
+      - "4566:4566"
+    environment:
+      - SERVICES=s3,ses
+      - DEBUG=1
+      - DATA_DIR=/tmp/localstack/data
+      - PORT_WEB_UI=4040
+      - USE_SINGLE_REGION=1
+      - DEFAULT_REGION=ap-northeast-2
+      - HOSTNAME=localhost
+      - HOSTNAME_EXTERNAL=localhost
+      - DOCKER_HOST=unix:///var/run/docker.sock
+    volumes:
+      - "~/workspace/tmp/localstack/data:/tmp/localstack/data" # localstack 이 생성하는 파일을 직접 편집하고 싶을 때
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "./localstack-init.d:/docker-entrypoint-initaws.d"

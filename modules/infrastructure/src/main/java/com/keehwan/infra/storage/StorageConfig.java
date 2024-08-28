@@ -1,7 +1,9 @@
 package com.keehwan.infra.storage;
 
-import org.springframework.beans.factory.annotation.Value;
+import com.keehwan.infra.consts.AwsProperties;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import software.amazon.awssdk.auth.credentials.*;
 import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.s3.S3Client;
@@ -9,12 +11,10 @@ import software.amazon.awssdk.services.s3.S3Client;
 import java.net.URI;
 import java.util.List;
 
+@RequiredArgsConstructor
+@Configuration
 public class StorageConfig {
-    @Value("${cloud.aws.endpoint}")
-    private String awsEndpoint;
-    private static final String AWS_ACCESS_KEY = "foo";
-    private static final String AWS_SECRET_KEY = "bar";
-
+    private final AwsProperties properties;
 
     @Bean
     public AwsCredentialsProvider awsCredentialsProvider() {
@@ -22,7 +22,7 @@ public class StorageConfig {
                 .reuseLastProviderEnabled(true)
                 .credentialsProviders(List.of(
                         DefaultCredentialsProvider.create(),
-                        StaticCredentialsProvider.create(AwsBasicCredentials.create(AWS_ACCESS_KEY, AWS_SECRET_KEY))
+                        StaticCredentialsProvider.create(AwsBasicCredentials.create(properties.getAccessKey(), properties.getSecretKey()))
                 ))
                 .build();
     }
@@ -31,8 +31,8 @@ public class StorageConfig {
     public S3Client s3Client() {
         return S3Client.builder()
                 .credentialsProvider(awsCredentialsProvider())
-                .region(Region.AP_NORTHEAST_2)
-                .endpointOverride(URI.create(awsEndpoint))
+                .region(Region.of(properties.getRegion()))
+                .endpointOverride(URI.create(properties.getEndpoint()))
                 .build();
     }
 }

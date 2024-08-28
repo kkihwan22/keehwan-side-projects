@@ -10,7 +10,7 @@ import java.io.File;
 
 @RequiredArgsConstructor
 @Service
-public class StorageServiceImpl implements StorageService {
+public class S3StorageService implements StorageService {
 
     private final S3Client client;
 

@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: infra-config
+cloud:
+  aws:
+    endpoint: localhost:4566
+    region: ap-northeast-2
+    access-key: AKIAIOSFODNN7EXAMPLE
+    secret-key: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+    s3:
+      bucket: temp
