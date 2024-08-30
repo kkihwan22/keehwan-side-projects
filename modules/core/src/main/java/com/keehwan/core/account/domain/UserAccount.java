@@ -5,6 +5,7 @@ import com.keehwan.core.account.domain.converters.UserRolesConverter;
 import com.keehwan.core.account.domain.enums.UserAccountStatus;
 import com.keehwan.core.account.domain.enums.UserRole;
 import com.keehwan.share.domain.BaseCreatedAndUpdatedDateTime;
+import com.keehwan.share.utils.RandomCodeGenerator;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.DynamicInsert;
@@ -76,8 +77,11 @@ public class UserAccount extends BaseCreatedAndUpdatedDateTime {
     @Convert(converter = UserAccountStatusConverter.class)
     private UserAccountStatus status;
 
-    @Embedded
-    private UserAccountVerification userAccountVerification;
+    @Column(name = "verified")
+    private boolean verified;
+
+    @Column(name = "verified_at")
+    private LocalDateTime verifiedDateTime;
 
     @Column(name = "password_last_changed_at")
     private LocalDateTime passwordLastChangedDateTime;
@@ -91,7 +95,6 @@ public class UserAccount extends BaseCreatedAndUpdatedDateTime {
                 .credentialAccount(true)
                 .socialAccount(false)
                 .roles(List.of(UserRole.USER))
-                .userAccountVerification(UserAccountVerification.init())
                 .build();
     }
 
@@ -101,18 +104,16 @@ public class UserAccount extends BaseCreatedAndUpdatedDateTime {
             String profileImage,
             SocialProvider socialLoginProvider,
             String providerId) {
-        UserAccountVerification userAccountVerification = new UserAccountVerification();
-        userAccountVerification.verify();
-
         return UserAccount.builder()
                 .username(username)
                 .nickname(nickname)
                 .profileImage(profileImage)
-                .password("rkAtkGkQslek.") // TODO: 난수
+                .password(RandomCodeGenerator.generateRandomNumberString(32))
                 .credentialAccount(false)
                 .socialAccount(true)
                 .roles(List.of(UserRole.USER))
-                .userAccountVerification(userAccountVerification)
+                .verified(true)
+                .verifiedDateTime(LocalDateTime.now())
                 .socialLoginProvider(socialLoginProvider)
                 .providerId(providerId)
                 .build();
@@ -166,5 +167,10 @@ public class UserAccount extends BaseCreatedAndUpdatedDateTime {
 
     public void deleteProfileImage() {
         this.changeProfileImage(null);
+    }
+
+    public void confirmEmail() {
+        this.verified = true;
+        this.verifiedDateTime = LocalDateTime.now();
     }
 }

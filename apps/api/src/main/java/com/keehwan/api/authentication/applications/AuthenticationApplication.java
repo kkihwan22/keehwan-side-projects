@@ -32,7 +32,12 @@ public class AuthenticationApplication {
 
     @Transactional
     public UserAccount createUserAccount(JoinRequest request) {
-        return createUserAccountUsecase.create(request.toCommand(passwordEncoder));
+        UserAccount createUserAccount = createUserAccountUsecase.create(request.toCommand(passwordEncoder));
+
+        // 인증 이메일 발송
+
+
+        return createUserAccount;
     }
 
     @Transactional
@@ -76,5 +81,9 @@ public class AuthenticationApplication {
         } catch (UserAccountNotExistsException e) {
             throw new UsernameNotFoundException("알 수 없는 사용자입니다.");
         }
+    }
+
+    public void verifyEmail(String code, String username) {
+        // UserAccountVerificationUsecase 호출...!!
     }
 }

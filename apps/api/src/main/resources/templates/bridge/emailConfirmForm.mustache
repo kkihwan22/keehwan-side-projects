@@ -1,0 +1,48 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1> Email 인증하기 </h1>
+    <hr>
+    <input id="code" type="text" name="code" placeholder="인증코드"/>
+    <input type="button" value="login" onclick="confirm()"/>
+    <div id="user-info" data-username="{{username}}"></div>
+</body>
+</html>
+
+<script>
+
+    function confirm() {
+        const code = document.getElementById("code").value;
+        const userInfo = document.getElementById("user-info");
+        const username = userInfo.dataset.username;
+
+        fetch('/auth/email-verify', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                code: code,
+                username: username
+            })
+        }).then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        }).then(data => {
+            // 서버 응답 처리 (예: 성공 메시지 표시, 페이지 이동 등)
+            console.log('Success:', data);
+        }).catch(error => {
+            // 에러 처리
+            console.error('Error:', error);
+        });
+    }
+
+</script>
