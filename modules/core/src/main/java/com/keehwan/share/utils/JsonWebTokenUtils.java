@@ -1,7 +1,7 @@
 package com.keehwan.share.utils;
 
-
 import com.keehwan.share.domain.code.JsonWebTokenType;
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
@@ -20,33 +20,36 @@ public class JsonWebTokenUtils {
     }
 
     public String generate(String username, String role, JsonWebTokenType type) {
+        return this.generate(username, role, type.name(), type.getExpiredMs());
+    }
+
+    public String generate(String username, String role, String type, long expiredMs) {
         return Jwts.builder()
-                .claim("type", type.name())
+                .claim("type", type)
                 .claim("username", username)
                 .claim("role", role)
                 .issuedAt(new Date(System.currentTimeMillis()))
-                .expiration(new Date(System.currentTimeMillis() + type.getExpiredMs()))
+                .expiration(new Date(System.currentTimeMillis() + expiredMs))
                 .signWith(key)
                 .compact();
     }
 
     public Boolean isExpired(String token) {
-        return Jwts.parser()
-                .verifyWith(key)
-                .build()
-                .parseSignedClaims(token)
-                .getPayload()
+        return getPayload(token)
                 .getExpiration()
                 .before(new Date());
     }
 
-
     public String getUsername(String token) {
+        return getPayload(token)
+                .get("username", String.class);
+    }
+
+    private Claims getPayload(String token) {
         return Jwts.parser()
                 .verifyWith(key)
                 .build()
                 .parseSignedClaims(token)
-                .getPayload()
-                .get("username", String.class);
+                .getPayload();
     }
 }
