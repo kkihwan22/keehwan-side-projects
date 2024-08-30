@@ -5,6 +5,7 @@ import com.keehwan.core.account.domain.UserToken;
 import com.keehwan.core.account.exception.TokenAlreadyExpiredException;
 import com.keehwan.core.account.exception.TokenNotExistsException;
 import com.keehwan.core.account.persistence.UserTokenPersistenceAdapterStub;
+import com.keehwan.fixtures.UserAccountFixture;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -21,7 +22,9 @@ import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
 public class UserAccountTokenServiceTest {
-    private final static String email = "account@email.com";
+    private final static String username = "account@email.com";
+    private final static String nickname = "testUser";
+    private final static String password = "testUser1234";
     private final static String token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c";
     private final static String notExistToken = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_cccccccc";
 
@@ -40,7 +43,7 @@ public class UserAccountTokenServiceTest {
 
         @BeforeEach
         void setUp() {
-            account = UserAccount.registerCredential(email, "1q2w3e4r");
+            account = UserAccountFixture.getUserAccount();
         }
 
         @DisplayName("로그인 시 생성된 refresh token을 저장한다.")
@@ -50,13 +53,12 @@ public class UserAccountTokenServiceTest {
         }
     }
 
-    // 로그아웃 시, refresh token을 expire한다.
     @Nested
     class ExpireRefreshTokenTest {
 
         @BeforeEach
         void setUp() {
-            account = UserAccount.registerCredential(email, "1q2w3e4r");
+            account = UserAccountFixture.getUserAccount();
             userAccountPersistenceAdapterStub.create(new UserToken(account, token));
         }
 
@@ -108,7 +110,7 @@ public class UserAccountTokenServiceTest {
 
         @BeforeEach
         void setUp() {
-            account = UserAccount.registerCredential(email, "1q2w3e4r");
+            account = UserAccountFixture.getUserAccount();
             userAccountPersistenceAdapterStub.create(new UserToken(account, token));
         }
 

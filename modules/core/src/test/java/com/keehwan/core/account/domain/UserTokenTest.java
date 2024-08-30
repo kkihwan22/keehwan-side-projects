@@ -1,5 +1,6 @@
 package com.keehwan.core.account.domain;
 
+import com.keehwan.fixtures.UserAccountFixture;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -12,8 +13,7 @@ class UserTokenTest {
 
     @BeforeEach
     void setUp() {
-        // TODO: Fixture 분리
-        account = UserAccount.registerCredential("test@test.com", null);
+        account = UserAccountFixture.getUserAccount();
     }
 
     @DisplayName("토큰이 생성된다.")

@@ -13,6 +13,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import static com.keehwan.core.account.service.usecases.CreateUserAccountUsecase.UserAccountCreateCommand;
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -24,14 +25,15 @@ class UserAccountServiceTest {
     @Spy
     UserAccountPersistenceAdapterStub accountPersistenceAdapter;
 
-    String email = "init@email.com";
+    String username = "init@email.com";
     String password = "1q2w3e4r";
+    String nickname = "testUser";
 
     @Nested
     class CreateUserAccountTest {
         @BeforeEach
         void setUp() {
-            accountPersistenceAdapter.create(UserAccount.registerCredential(email, password));
+            accountPersistenceAdapter.create(UserAccount.registerCredential(username,nickname, password, null));
         }
 
         @DisplayName("이미 등록된 email이 있다면 ")
@@ -39,7 +41,7 @@ class UserAccountServiceTest {
         void case1() throws Exception {
 
             assertThrows(UserAccountAlreadyExistsException.class, () -> {
-                sut.create(email, password);
+                sut.create(new UserAccountCreateCommand(username, nickname, password, null));
             });
         }
 
@@ -48,7 +50,7 @@ class UserAccountServiceTest {
         void case2() throws Exception {
             String nonExistsEmail = "seconds@email.com";
 
-            UserAccount userAccount = accountPersistenceAdapter.create(UserAccount.registerCredential(nonExistsEmail, password));
+            UserAccount userAccount = accountPersistenceAdapter.create(UserAccount.registerCredential(nonExistsEmail, nickname, password, null));
 
             assertAll(
                     () -> assertEquals(nonExistsEmail, userAccount.getUsername()),

@@ -1,6 +1,7 @@
 package com.keehwan.core.account.domain;
 
 import com.keehwan.core.account.domain.enums.UserAccountStatus;
+import com.keehwan.fixtures.UserAccountFixture;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -17,33 +18,31 @@ class UserAccountTest {
 
     @Test
     void lockedTest() {
-        UserAccount userAccount = new UserAccount();
-        userAccount.locked();
-        assertThat(userAccount.isLocked()).isTrue();
+        UserAccount account = UserAccountFixture.getUserAccount();
+        account.locked();
+        assertThat(account.isLocked()).isTrue();
     }
 
     @Nested
     class VerifyPasswordTest {
-        UserAccount userAccount;
-        String password = "1q2w3e4r";
-        String missMatchedPassword = password.concat(password);
+        UserAccount account;
 
         @BeforeEach
         void setUp() {
-            userAccount = UserAccount.registerCredential("init@email.com", password);
+            account = UserAccountFixture.getUserAccount();
         }
 
         @DisplayName("패스워드 불일치 시 - failureCount를 1증가시키고, false를 반환한다.")
         @Test
         void missMatchPasswordTest() {
-            int expectedFailureCount = userAccount.getFailureCount() + 1;
+            int expectedFailureCount = account.getFailureCount() + 1;
 
             // when
-            userAccount.failurePasswordMatched();
+            account.failurePasswordMatched();
 
             // then
-            assertThat(userAccount.getFailureCount()).isEqualTo(expectedFailureCount);
-            assertThat(userAccount.getStatus()).isEqualTo(UserAccountStatus.ENABLED);
+            assertThat(account.getFailureCount()).isEqualTo(expectedFailureCount);
+            assertThat(account.getStatus()).isEqualTo(UserAccountStatus.ENABLED);
         }
 
         @DisplayName("패스워드 불일치 시 5회 - AccountStatus를 LOCKED으로 변경 후., false를 반환한다.")
@@ -51,12 +50,12 @@ class UserAccountTest {
         void missMatchPasswordOver5Test() {
             // when
             for (int i = 0; i < UserAccount.LOCKED_COUNT + 1; i++) {
-                userAccount.failurePasswordMatched();
+                account.failurePasswordMatched();
             }
 
             // then
-            assertThat(userAccount.getFailureCount() >= UserAccount.LOCKED_COUNT).isTrue();
-            assertThat(userAccount.isLocked()).isTrue();
+            assertThat(account.getFailureCount() >= UserAccount.LOCKED_COUNT).isTrue();
+            assertThat(account.isLocked()).isTrue();
         }
 
         @DisplayName("패스워드 일치 시 - failureCount를 0으로 초기화, true 반환한다.")
@@ -65,23 +64,23 @@ class UserAccountTest {
             int expectedFailureCount = 0;
 
             // when
-            userAccount.successPasswordMatched();
+            account.successPasswordMatched();
 
             // then
-            assertThat(userAccount.getFailureCount()).isEqualTo(expectedFailureCount);
-            assertThat(userAccount.getStatus()).isEqualTo(UserAccountStatus.ENABLED);
+            assertThat(account.getFailureCount()).isEqualTo(expectedFailureCount);
+            assertThat(account.getStatus()).isEqualTo(UserAccountStatus.ENABLED);
         }
 
         @DisplayName("로그인 실패 횟수 초과로 상태가 LOCKED 인 경우 - false를 반환한다. ")
         @Test
         void alreadyStatusIsLockedTest() {
-            userAccount.locked();
+            account.locked();
 
             // when
-            userAccount.failurePasswordMatched();
+            account.failurePasswordMatched();
 
             // then
-            assertThat(userAccount.isLocked()).isTrue();
+            assertThat(account.isLocked()).isTrue();
         }
     }
 
@@ -89,6 +88,7 @@ class UserAccountTest {
     class PasswordChangedTest {
 
         String username = "username";
+        String nickname = "username";
         String password = "password";
 
         UserAccount account;
@@ -96,7 +96,7 @@ class UserAccountTest {
 
         @BeforeEach
         void setUp() {
-            this.account = UserAccount.registerCredential(username, password);
+            account = UserAccountFixture.getUserAccount();
         }
 
         @DisplayName("마지막 패스워드 변경 날짜가 오늘보다 90일 전이면 false를 반환한다.")
@@ -136,7 +136,6 @@ class UserAccountTest {
         @Test
         void case4() {
             // given
-            UserAccount account = UserAccount.registerCredential(username, password);
             String message = "전달받은 패스워드가 null입니다.";
 
             // then
@@ -149,7 +148,6 @@ class UserAccountTest {
         @Test
         void case5() {
             // given
-            UserAccount account = UserAccount.registerCredential(username, password);
 
             // when
             String changedPassword = "changedPassword";
