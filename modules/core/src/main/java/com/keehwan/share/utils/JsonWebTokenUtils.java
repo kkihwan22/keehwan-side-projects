@@ -20,15 +20,14 @@ public class JsonWebTokenUtils {
         key = Keys.hmacShaKeyFor(byteSecretKey);
     }
 
-    public String generate(String username, String role, JsonWebTokenType type) {
-        return this.generate(username, role, type.name(), type.getExpiredMs());
+    public String generate(String username, JsonWebTokenType type) {
+        return this.generate(username, type.name(), type.getExpiredMs());
     }
 
-    public String generate(String username, String role, String type, long expiredMs) {
+    public String generate(String username, String type, long expiredMs) {
         return Jwts.builder()
                 .claim("type", type)
                 .claim("username", username)
-                .claim("role", role)
                 .issuedAt(new Date(System.currentTimeMillis()))
                 .expiration(new Date(System.currentTimeMillis() + expiredMs))
                 .signWith(key)

@@ -1,7 +1,7 @@
 package com.keehwan.api.authentication;
 
 import com.keehwan.api.authentication.applications.AuthenticationApplication;
-import com.keehwan.api.authentication.exceptions.JwtInvalidException;
+import com.keehwan.api.authentication.exceptions.JsonWebTokenInvalidException;
 import com.keehwan.core.account.domain.UserAccount;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -32,13 +32,13 @@ public class JwtFilter extends OncePerRequestFilter {
 
         if (authorizationValue != null) {
             if (!authorizationValue.startsWith("Bearer")) {
-                throw new JwtInvalidException("토큰의 형식이 유효하지 않습니다.");
+                throw new JsonWebTokenInvalidException("토큰의 형식이 유효하지 않습니다.");
             }
 
             String[] splitValue = authorizationValue.split(" ");
 
             if (splitValue.length != 2) {
-                throw new JwtInvalidException("토큰의 형식이 유효하지 않습니다.");
+                throw new JsonWebTokenInvalidException("토큰의 형식이 유효하지 않습니다.");
             }
 
             UserAccount userAccount = authenticationApplication.getUserAccount(splitValue[1]);

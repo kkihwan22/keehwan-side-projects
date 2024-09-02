@@ -94,7 +94,7 @@ public class UserAccount extends BaseCreatedAndUpdatedDateTime {
                 .profileImage(profileImage)
                 .credentialAccount(true)
                 .socialAccount(false)
-                .roles(List.of(UserRole.USER))
+                .roles(List.of(UserRole.GUEST))
                 .build();
     }
 
@@ -111,7 +111,7 @@ public class UserAccount extends BaseCreatedAndUpdatedDateTime {
                 .password(RandomCodeGenerator.generateRandomNumberString(32))
                 .credentialAccount(false)
                 .socialAccount(true)
-                .roles(List.of(UserRole.USER))
+                .roles(List.of(UserRole.GUEST))
                 .verified(true)
                 .verifiedDateTime(LocalDateTime.now())
                 .socialLoginProvider(socialLoginProvider)

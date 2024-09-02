@@ -1,10 +1,10 @@
 package com.keehwan.api.authentication.applications;
 
-import com.keehwan.api.authentication.exceptions.JwtExpireException;
+import com.keehwan.api.authentication.exceptions.JsonWebTokenExpireException;
+import com.keehwan.api.authentication.exceptions.JsonWebTokenInvalidException;
 import com.keehwan.api.rest.dto.JoinDTO.JoinRequest;
 import com.keehwan.core.account.domain.UserAccount;
 import com.keehwan.core.account.domain.UserToken;
-import com.keehwan.core.account.domain.enums.UserRole;
 import com.keehwan.core.account.exception.UserAccountNotExistsException;
 import com.keehwan.core.account.service.usecases.CreateUserAccountUsecase;
 import com.keehwan.core.account.service.usecases.CreateUserTokenUsecase;
@@ -37,10 +37,8 @@ public class AuthenticationApplication {
     public UserAccount createUserAccount(JoinRequest request) {
         UserAccount createUserAccount = createUserAccountUsecase.create(request.toCommand(passwordEncoder));
 
-        mailService.send(request.username(), "[인증] 이메일 인증을 부탁드립니다.", jsonWebTokenUtils.generate(request.username(), "", JsonWebTokenType.EMAIL_VERITY));
-
         // 인증 이메일 발송
-
+        mailService.send(request.username(), "[인증] 이메일 인증을 부탁드립니다.", jsonWebTokenUtils.generate(request.username(), JsonWebTokenType.EMAIL_VERITY));
 
         return createUserAccount;
     }
@@ -48,8 +46,8 @@ public class AuthenticationApplication {
     @Transactional
     public void create(UserAccount account, HttpServletResponse response) {
         String username = account.getUsername();
-        String accessToken = jsonWebTokenUtils.generate(username, UserRole.USER.name(), JsonWebTokenType.ACCESS); // 1시간
-        String refreshToken = jsonWebTokenUtils.generate(username, UserRole.USER.name(), JsonWebTokenType.REFRESH); // 1개월
+        String accessToken = jsonWebTokenUtils.generate(username, JsonWebTokenType.ACCESS); // 1시간
+        String refreshToken = jsonWebTokenUtils.generate(username, JsonWebTokenType.REFRESH); // 1개월
 
         UserToken createdUserToken = createUserTokenUsecase.create(account, refreshToken);
 
@@ -63,14 +61,21 @@ public class AuthenticationApplication {
 
     @Transactional
     public String renew(String token) {
-        UserToken findUserToken = getUserTokenUsecase.getUserToken(token);
+        UserToken tokenOfUser = getUserTokenUsecase.getUserToken(token);
 
-        if (jsonWebTokenUtils.isExpired(token)) {
-            findUserToken.expire("expired");
-            throw new JwtExpireException("만료된 refresh token 입니다. ");
+        try {
+            String username = jsonWebTokenUtils.getUsername(token);
+
+            if (tokenOfUser.getAccount().getUsername().equals(username)) {
+                return jsonWebTokenUtils.generate(tokenOfUser.getAccount().getUsername(), JsonWebTokenType.ACCESS);
+            }
+
+            throw new JsonWebTokenInvalidException("token의 username이 일치하지 않습니다.");
+
+        } catch (ExpiredJwtException e) {
+            tokenOfUser.expire("expired");
+            throw new JsonWebTokenExpireException("만료된 refresh token 입니다. ");
         }
-
-        return jsonWebTokenUtils.generate(findUserToken.getAccount().getUsername(), "USER", JsonWebTokenType.ACCESS);
     }
 
     public UserAccount getUserAccount(String token) {
@@ -79,7 +84,7 @@ public class AuthenticationApplication {
             String username = this.jsonWebTokenUtils.getUsername(token);
             return getUserAccountUsecase.getUserAccount(username);
         } catch (ExpiredJwtException e) {
-            throw new JwtExpireException("만료된 토큰입니다.");
+            throw new JsonWebTokenExpireException("만료된 토큰입니다.");
         } catch (UserAccountNotExistsException e) {
             throw new UsernameNotFoundException("알 수 없는 사용자입니다.");
         }
