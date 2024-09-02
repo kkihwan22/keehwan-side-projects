@@ -1,7 +1,7 @@
 package com.keehwan.api.views;
 
 import com.keehwan.api.authentication.CustomPrincipalDetails;
-import com.keehwan.domain.account.domain.UserAccount;
+import com.keehwan.core.account.domain.UserAccount;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.Authentication;

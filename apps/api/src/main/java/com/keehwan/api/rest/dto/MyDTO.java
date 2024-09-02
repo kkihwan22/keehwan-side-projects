@@ -1,6 +1,6 @@
 package com.keehwan.api.rest.dto;
 
-import com.keehwan.domain.account.domain.UserAccount;
+import com.keehwan.core.account.domain.UserAccount;
 import jakarta.validation.constraints.NotBlank;
 
 public class MyDTO {

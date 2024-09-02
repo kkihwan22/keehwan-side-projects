@@ -2,7 +2,7 @@ package com.keehwan.api.authentication;
 
 import com.keehwan.api.authentication.exceptions.UserAccountLockedException;
 import com.keehwan.api.authentication.exceptions.UserAccountNotEnableException;
-import com.keehwan.domain.account.domain.UserAccount;
+import com.keehwan.core.account.domain.UserAccount;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;

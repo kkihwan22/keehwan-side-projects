@@ -1,7 +1,7 @@
 package com.keehwan.api.authentication.applications;
 
 import com.keehwan.api.authentication.service.UserAccountServiceStub;
-import com.keehwan.domain.account.exception.UserAccountNotExistsException;
+import com.keehwan.core.account.exception.UserAccountNotExistsException;
 import com.keehwan.share.domain.code.JsonWebTokenType;
 import com.keehwan.share.test.exceptions.NotImplementedTestException;
 import com.keehwan.share.utils.JsonWebTokenUtils;

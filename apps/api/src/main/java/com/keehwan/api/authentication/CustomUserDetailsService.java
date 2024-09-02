@@ -1,6 +1,6 @@
 package com.keehwan.api.authentication;
 
-import com.keehwan.domain.account.domain.UserAccount;
+import com.keehwan.core.account.domain.UserAccount;
 import com.keehwan.persistence.account.jpa.UserAccountJpaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;

@@ -1,6 +1,6 @@
 package com.keehwan.fixtures;
 
-import com.keehwan.domain.account.domain.UserToken;
+import com.keehwan.core.account.domain.UserToken;
 
 public class UserTokenFixture {
 

@@ -1,6 +1,6 @@
 package com.keehwan.api.views;
 
-import com.keehwan.domain.account.service.usecases.UserAccountEmailConfirmUsecase;
+import com.keehwan.core.account.service.usecases.UserAccountEmailConfirmUsecase;
 import com.keehwan.share.utils.JsonWebTokenUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;

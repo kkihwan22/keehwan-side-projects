@@ -1,7 +1,7 @@
 package com.keehwan.api.authentication.support;
 
 import com.keehwan.api.authentication.CustomPrincipalDetails;
-import com.keehwan.domain.account.domain.UserAccount;
+import com.keehwan.core.account.domain.UserAccount;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 

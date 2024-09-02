@@ -2,7 +2,7 @@ package com.keehwan.api.authentication;
 
 import com.keehwan.api.authentication.applications.AuthenticationApplication;
 import com.keehwan.api.authentication.exceptions.JwtInvalidException;
-import com.keehwan.domain.account.domain.UserAccount;
+import com.keehwan.core.account.domain.UserAccount;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
