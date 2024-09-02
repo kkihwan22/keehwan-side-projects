@@ -22,6 +22,8 @@ dependencies {
     implementation(Spring.boot.mustache)
 
     implementation("mysql:mysql-connector-java:_")
+
+    testImplementation(testFixtures(project(":modules:core")))
 }
 
 
