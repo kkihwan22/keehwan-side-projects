@@ -3,7 +3,7 @@ package com.keehwan.api.rest;
 import com.keehwan.api.authentication.applications.AuthenticationApplication;
 import com.keehwan.api.rest.dto.ApiResponse;
 import com.keehwan.api.share.BaseRestController;
-import com.keehwan.core.account.domain.UserAccount;
+import com.keehwan.domain.account.domain.UserAccount;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import lombok.RequiredArgsConstructor;

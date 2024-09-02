@@ -1,7 +1,7 @@
 package com.keehwan.fixtures;
 
-import com.keehwan.core.account.domain.UserAccount;
-import com.keehwan.core.account.domain.enums.UserAccountStatus;
+import com.keehwan.domain.account.domain.UserAccount;
+import com.keehwan.domain.account.domain.enums.UserAccountStatus;
 
 public class UserAccountFixture {
 

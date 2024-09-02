@@ -1,7 +1,7 @@
 package com.keehwan.api.authentication.enums;
 
 import com.keehwan.api.authentication.Oauth2UserResponse;
-import com.keehwan.core.account.domain.UserAccount.SocialProvider;
+import com.keehwan.domain.account.domain.UserAccount.SocialProvider;
 import lombok.Getter;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 

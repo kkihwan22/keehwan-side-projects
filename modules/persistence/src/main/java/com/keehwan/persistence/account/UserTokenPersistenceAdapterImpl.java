@@ -1,8 +1,8 @@
 package com.keehwan.persistence.account;
 
-import com.keehwan.core.account.domain.UserToken;
-import com.keehwan.core.account.exception.TokenNotExistsException;
-import com.keehwan.core.account.persistence.UserTokenPersistenceAdapter;
+import com.keehwan.domain.account.domain.UserToken;
+import com.keehwan.domain.account.exception.TokenNotExistsException;
+import com.keehwan.domain.account.persistence.UserTokenPersistenceAdapter;
 import com.keehwan.persistence.account.jpa.UserTokenJpaRepository;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;

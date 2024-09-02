@@ -1,6 +1,6 @@
 package com.keehwan.persistence.account.jpa;
 
-import com.keehwan.core.account.domain.UserToken;
+import com.keehwan.domain.account.domain.UserToken;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
