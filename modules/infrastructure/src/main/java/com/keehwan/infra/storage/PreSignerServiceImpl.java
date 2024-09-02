@@ -1,7 +1,7 @@
 package com.keehwan.infra.storage;
 
-import com.keehwan.infra.consts.AwsProperties;
-import com.keehwan.infra.consts.AwsProperties.S3;
+import com.keehwan.infra.properties.AwsProperties;
+import com.keehwan.infra.properties.AwsProperties.S3;
 import org.springframework.stereotype.Service;
 import software.amazon.awssdk.auth.credentials.AwsCredentialsProvider;
 import software.amazon.awssdk.regions.Region;

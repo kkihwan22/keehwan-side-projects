@@ -27,12 +27,7 @@ public class UserAccountService implements
             throw new UserAccountAlreadyExistsException();
         }
 
-        UserAccount createUserAccount = userAccountPersistenceAdapter.create(command.toEntity());
-
-
-        // Email 발송 (UserAccount.getVer
-
-        return createUserAccount;
+        return userAccountPersistenceAdapter.create(command.toEntity());
     }
 
     @Override

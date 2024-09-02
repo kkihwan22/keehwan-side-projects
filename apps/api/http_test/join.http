@@ -3,8 +3,8 @@ POST {{host}}/join
 Content-Type: application/json
 
 {
-  "username": "keehwan@weversecompany.com",
-  "nickname": "위버스커머스",
+  "username": "hopeman97@hanmail.net",
+  "nickname": "굿맨",
   "password": "test1234",
   "profileImage": null
 }

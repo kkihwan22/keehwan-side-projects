@@ -10,6 +10,7 @@ import com.keehwan.core.account.service.usecases.CreateUserAccountUsecase;
 import com.keehwan.core.account.service.usecases.CreateUserTokenUsecase;
 import com.keehwan.core.account.service.usecases.GetUserAccountUsecase;
 import com.keehwan.core.account.service.usecases.GetUserTokenUsecase;
+import com.keehwan.infra.mail.MailService;
 import com.keehwan.share.domain.code.JsonWebTokenType;
 import com.keehwan.share.utils.JsonWebTokenUtils;
 import io.jsonwebtoken.ExpiredJwtException;
@@ -30,10 +31,13 @@ public class AuthenticationApplication {
     private final GetUserTokenUsecase getUserTokenUsecase;
     private final JsonWebTokenUtils jsonWebTokenUtils;
     private final BCryptPasswordEncoder passwordEncoder;
+    private final MailService mailService;
 
     @Transactional
     public UserAccount createUserAccount(JoinRequest request) {
         UserAccount createUserAccount = createUserAccountUsecase.create(request.toCommand(passwordEncoder));
+
+        mailService.send(request.username(), "[인증] 이메일 인증을 부탁드립니다.", jsonWebTokenUtils.generate(request.username(), "", JsonWebTokenType.EMAIL_VERITY));
 
         // 인증 이메일 발송
 

@@ -9,3 +9,10 @@ cloud:
     secret-key: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
     s3:
       bucket: temp
+  google:
+    mail:
+      host: smtp.gmail.com
+      port: 587
+      username: ${GMAIL_USERNAME}
+      password: ${GMAIL_PASSWORD}
+

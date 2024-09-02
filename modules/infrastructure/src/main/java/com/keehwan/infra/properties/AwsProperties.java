@@ -1,4 +1,4 @@
-package com.keehwan.infra.consts;
+package com.keehwan.infra.properties;
 
 import lombok.Getter;
 import lombok.Setter;

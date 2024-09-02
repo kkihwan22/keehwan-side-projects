@@ -7,7 +7,7 @@ services:
     ports:
       - "4566:4566"
     environment:
-      - SERVICES=s3,ses
+      - SERVICES=s3
       - DEBUG=1
       - DATA_DIR=/tmp/localstack/data
       - PORT_WEB_UI=4040

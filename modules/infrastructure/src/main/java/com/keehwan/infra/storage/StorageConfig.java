@@ -1,6 +1,6 @@
 package com.keehwan.infra.storage;
 
-import com.keehwan.infra.consts.AwsProperties;
+import com.keehwan.infra.properties.AwsProperties;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
