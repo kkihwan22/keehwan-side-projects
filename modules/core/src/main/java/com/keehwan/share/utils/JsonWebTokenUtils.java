@@ -8,6 +8,7 @@ import io.jsonwebtoken.security.Keys;
 
 import javax.crypto.SecretKey;
 import java.util.Date;
+import java.util.Map;
 
 public class JsonWebTokenUtils {
     private final String secret;
@@ -43,6 +44,14 @@ public class JsonWebTokenUtils {
     public String getUsername(String token) {
         return getPayload(token)
                 .get("username", String.class);
+    }
+
+    public boolean hasClaim(String token, String key, Object value) {
+        return value.equals(this.getClaimMap(token).getOrDefault(key, null));
+    }
+
+    public Map<String, Object> getClaimMap(String token) {
+        return this.getPayload(token);
     }
 
     private Claims getPayload(String token) {

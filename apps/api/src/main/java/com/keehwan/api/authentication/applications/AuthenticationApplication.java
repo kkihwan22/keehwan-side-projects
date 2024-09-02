@@ -12,6 +12,7 @@ import com.keehwan.core.account.service.usecases.GetUserAccountUsecase;
 import com.keehwan.core.account.service.usecases.GetUserTokenUsecase;
 import com.keehwan.share.domain.code.JsonWebTokenType;
 import com.keehwan.share.utils.JsonWebTokenUtils;
+import io.jsonwebtoken.ExpiredJwtException;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
@@ -70,14 +71,11 @@ public class AuthenticationApplication {
 
     public UserAccount getUserAccount(String token) {
         // todo: 레디스 캐시 연결
-
-        if (jsonWebTokenUtils.isExpired(token)) {
-            throw new JwtExpireException("만료된 토큰입니다.");
-        }
-
         try {
             String username = this.jsonWebTokenUtils.getUsername(token);
             return getUserAccountUsecase.getUserAccount(username);
+        } catch (ExpiredJwtException e) {
+            throw new JwtExpireException("만료된 토큰입니다.");
         } catch (UserAccountNotExistsException e) {
             throw new UsernameNotFoundException("알 수 없는 사용자입니다.");
         }

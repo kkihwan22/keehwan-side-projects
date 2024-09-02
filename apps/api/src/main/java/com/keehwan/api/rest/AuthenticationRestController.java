@@ -30,8 +30,8 @@ public class AuthenticationRestController implements BaseRestController {
     }
 
     @PostMapping("/renew")
-    public ApiResponse<String> renew(@Valid @RequestBody Request request, BindingResult bindingResult) {
-        String renewToken = authenticationApplication.renew(request.token);
+    public ApiResponse<String> renew(@Valid @RequestBody RenewRequest renewRequest, BindingResult bindingResult) {
+        String renewToken = authenticationApplication.renew(renewRequest.token);
         return ApiResponse.just(renewToken);
     }
 
@@ -41,5 +41,5 @@ public class AuthenticationRestController implements BaseRestController {
         return ApiResponse.just(null);
     }
 
-    public record Request(@NotBlank String token) {}
+    public record RenewRequest(@NotBlank String token) {}
 }

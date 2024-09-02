@@ -14,7 +14,7 @@ import java.util.Objects;
 @RequiredArgsConstructor
 @Service
 public class UserAccountService implements
-        CreateUserAccountUsecase, GetUserAccountUsecase, UserAccountUpdateNickname, UserAccountUpdateProfileImage, UserAccountDeleteProfileImage {
+        CreateUserAccountUsecase, GetUserAccountUsecase, UserAccountUpdateNickname, UserAccountUpdateProfileImage, UserAccountDeleteProfileImage, UserAccountEmailConfirmUsecase {
 
     private final UserAccountPersistenceAdapter userAccountPersistenceAdapter;
 
@@ -27,7 +27,12 @@ public class UserAccountService implements
             throw new UserAccountAlreadyExistsException();
         }
 
-        return userAccountPersistenceAdapter.create(command.toEntity());
+        UserAccount createUserAccount = userAccountPersistenceAdapter.create(command.toEntity());
+
+
+        // Email 발송 (UserAccount.getVer
+
+        return createUserAccount;
     }
 
     @Override
@@ -55,5 +60,13 @@ public class UserAccountService implements
         UserAccount account = this.getUserAccount(username);
         account.changeProfileImage(profileImage);
         return account;
+    }
+
+    @Transactional
+    @Override
+    public UserAccount confirmEmail(String username) {
+        UserAccount findUserAccount = userAccountPersistenceAdapter.getAccountByUsername(username);
+        findUserAccount.confirmEmail();
+        return findUserAccount;
     }
 }
