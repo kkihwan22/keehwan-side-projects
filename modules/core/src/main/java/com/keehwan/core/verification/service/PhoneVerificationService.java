@@ -7,6 +7,7 @@ import com.keehwan.core.verification.service.usecase.PhoneNumberVerificationConf
 import com.keehwan.core.verification.service.usecase.PhoneNumberVerificationRequestUsecase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @RequiredArgsConstructor
 @Service
@@ -20,6 +21,7 @@ public class PhoneVerificationService implements
         return phoneVerificationCodeAdapter.createVerificationCode(PhoneNumberVerificationCode.issue(phoneNumber));
     }
 
+    @Transactional
     @Override
     public boolean confirm(String token, String code) {
         PhoneNumberVerificationCode findCode = phoneVerificationCodeAdapter.getVerificationCode(token);

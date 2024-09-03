@@ -17,8 +17,13 @@ POST {{host}}/renew
 Content-Type: application/json
 
 {
-  "token": "eyJhbGciOiJIUzI1NiJ9.eyJ0eXBlIjoiUkVGUkVTSCIsInVzZXJuYW1lIjoidGVzdEB0ZXN0LmNvbSIsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzI0MDU1OTQyLCJleHAiOjE3MjY2NDc5NDJ9.GpOIsiodZns_QH0StB_gC5w6t0_lD4dx8aQJbleKVkE"
+  "token": "eyJhbGciOiJIUzI1NiJ9.eyJ0eXBlIjoiUkVGUkVTSCIsInVzZXJuYW1lIjoia2VlaHdhbkB3ZXZlcnNlY29tcGFueS5jb20iLCJpYXQiOjE3MjUzNDEzMDYsImV4cCI6MTcyNzkzMzMwNn0.u2C52PaHKXuVPu9XXOWEJTUsV7fnAh8aLlWzrzrmFP8"
 }
+
+> {%
+client.global.set("Authorization", 'Bearer ' + response.body.data);
+client.log("access token : " + client.global.get("Authorization"));
+%}
 
 
 ### 토큰을 expire 시킨다.

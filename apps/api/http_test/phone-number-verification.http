@@ -13,7 +13,7 @@ Content-Type: application/json
 Authorization: {{Authorization}}
 
 {
-  "token": "4c2fe905d5ed491388798962c471bbe3",
-  "code": "625874"
+  "token": "0a5a8bf4a86a433f84188411b3a8fc11",
+  "code": "885061"
 }
 
