@@ -1,3 +1,226 @@
+PATCH http://localhost:7070/api/v1/verifications/phone/verify-code
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ0eXBlIjoiQUNDRVNTIiwidXNlcm5hbWUiOiJrZWVod2FuQHdldmVyc2Vjb21wYW55LmNvbSIsImlhdCI6MTcyNTM0MTMwNiwiZXhwIjoxNzI1MzQ0OTA2fQ.-Q2ZaAPfz8IwMvB4j-VQJ_o7RrMkJRFGP1gZvLb2NJg
+Content-Length: 69
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Cookie: JSESSIONID=05E8DD7CAAC63EA577424616ED448F86; refresh_token=eyJhbGciOiJIUzI1NiJ9.eyJ0eXBlIjoiUkVGUkVTSCIsInVzZXJuYW1lIjoia2VlaHdhbkB3ZXZlcnNlY29tcGFueS5jb20iLCJpYXQiOjE3MjUzNDEzMDYsImV4cCI6MTcyNzkzMzMwNn0.u2C52PaHKXuVPu9XXOWEJTUsV7fnAh8aLlWzrzrmFP8
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "token": "4c2fe905d5ed491388798962c471bbe3",
+  "code": "625874"
+}
+
+<> 2024-09-03T144450.200.json
+
+###
+
+PATCH http://localhost:7070/api/v1/verifications/phone/verify-code
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ0eXBlIjoiQUNDRVNTIiwidXNlcm5hbWUiOiJrZWVod2FuQHdldmVyc2Vjb21wYW55LmNvbSIsImlhdCI6MTcyNTM0MTMwNiwiZXhwIjoxNzI1MzQ0OTA2fQ.-Q2ZaAPfz8IwMvB4j-VQJ_o7RrMkJRFGP1gZvLb2NJg
+Content-Length: 69
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Cookie: JSESSIONID=05E8DD7CAAC63EA577424616ED448F86; refresh_token=eyJhbGciOiJIUzI1NiJ9.eyJ0eXBlIjoiUkVGUkVTSCIsInVzZXJuYW1lIjoia2VlaHdhbkB3ZXZlcnNlY29tcGFueS5jb20iLCJpYXQiOjE3MjUzNDEzMDYsImV4cCI6MTcyNzkzMzMwNn0.u2C52PaHKXuVPu9XXOWEJTUsV7fnAh8aLlWzrzrmFP8
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "token": "4c2fe905d5ed491388798962c471bbe3",
+  "code": "625874"
+}
+
+<> 2024-09-03T144328.200.json
+
+###
+
+POST http://localhost:7070/api/v1/verifications/phone
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ0eXBlIjoiQUNDRVNTIiwidXNlcm5hbWUiOiJrZWVod2FuQHdldmVyc2Vjb21wYW55LmNvbSIsImlhdCI6MTcyNTM0MTMwNiwiZXhwIjoxNzI1MzQ0OTA2fQ.-Q2ZaAPfz8IwMvB4j-VQJ_o7RrMkJRFGP1gZvLb2NJg
+Content-Length: 35
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Cookie: JSESSIONID=05E8DD7CAAC63EA577424616ED448F86; refresh_token=eyJhbGciOiJIUzI1NiJ9.eyJ0eXBlIjoiUkVGUkVTSCIsInVzZXJuYW1lIjoia2VlaHdhbkB3ZXZlcnNlY29tcGFueS5jb20iLCJpYXQiOjE3MjUzNDEzMDYsImV4cCI6MTcyNzkzMzMwNn0.u2C52PaHKXuVPu9XXOWEJTUsV7fnAh8aLlWzrzrmFP8
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "phone_number": "01039960399"
+}
+
+<> 2024-09-03T144257.200.json
+
+###
+
+POST http://localhost:7070/api/v1/verifications/phone
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ0eXBlIjoiQUNDRVNTIiwidXNlcm5hbWUiOiJrZWVod2FuQHdldmVyc2Vjb21wYW55LmNvbSIsImlhdCI6MTcyNTM0MTMwNiwiZXhwIjoxNzI1MzQ0OTA2fQ.-Q2ZaAPfz8IwMvB4j-VQJ_o7RrMkJRFGP1gZvLb2NJg
+Content-Length: 35
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Cookie: JSESSIONID=05E8DD7CAAC63EA577424616ED448F86; refresh_token=eyJhbGciOiJIUzI1NiJ9.eyJ0eXBlIjoiUkVGUkVTSCIsInVzZXJuYW1lIjoia2VlaHdhbkB3ZXZlcnNlY29tcGFueS5jb20iLCJpYXQiOjE3MjUzNDEzMDYsImV4cCI6MTcyNzkzMzMwNn0.u2C52PaHKXuVPu9XXOWEJTUsV7fnAh8aLlWzrzrmFP8
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "phone_number": "01039960399"
+}
+
+<> 2024-09-03T144051.401.json
+
+###
+
+POST http://localhost:7070/api/v1/verifications/phone
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ0eXBlIjoiQUNDRVNTIiwidXNlcm5hbWUiOiJrZWVod2FuQHdldmVyc2Vjb21wYW55LmNvbSIsImlhdCI6MTcyNTM0MTMwNiwiZXhwIjoxNzI1MzQ0OTA2fQ.-Q2ZaAPfz8IwMvB4j-VQJ_o7RrMkJRFGP1gZvLb2NJg
+Content-Length: 35
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Cookie: JSESSIONID=05E8DD7CAAC63EA577424616ED448F86; refresh_token=eyJhbGciOiJIUzI1NiJ9.eyJ0eXBlIjoiUkVGUkVTSCIsInVzZXJuYW1lIjoia2VlaHdhbkB3ZXZlcnNlY29tcGFueS5jb20iLCJpYXQiOjE3MjUzNDEzMDYsImV4cCI6MTcyNzkzMzMwNn0.u2C52PaHKXuVPu9XXOWEJTUsV7fnAh8aLlWzrzrmFP8
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "phone_number": "01039960399"
+}
+
+<> 2024-09-03T144044.401.json
+
+###
+
+POST http://localhost:7070/api/v1/verifications/phone
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ0eXBlIjoiQUNDRVNTIiwidXNlcm5hbWUiOiJrZWVod2FuQHdldmVyc2Vjb21wYW55LmNvbSIsImlhdCI6MTcyNTM0MTMwNiwiZXhwIjoxNzI1MzQ0OTA2fQ.-Q2ZaAPfz8IwMvB4j-VQJ_o7RrMkJRFGP1gZvLb2NJg
+Content-Length: 35
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Cookie: JSESSIONID=05E8DD7CAAC63EA577424616ED448F86; refresh_token=eyJhbGciOiJIUzI1NiJ9.eyJ0eXBlIjoiUkVGUkVTSCIsInVzZXJuYW1lIjoia2VlaHdhbkB3ZXZlcnNlY29tcGFueS5jb20iLCJpYXQiOjE3MjUzNDEzMDYsImV4cCI6MTcyNzkzMzMwNn0.u2C52PaHKXuVPu9XXOWEJTUsV7fnAh8aLlWzrzrmFP8
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "phone_number": "01039960399"
+}
+
+<> 2024-09-03T143939.401.json
+
+###
+
+POST http://localhost:7070/api/v1/verifications/phone
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ0eXBlIjoiQUNDRVNTIiwidXNlcm5hbWUiOiJrZWVod2FuQHdldmVyc2Vjb21wYW55LmNvbSIsImlhdCI6MTcyNTM0MTMwNiwiZXhwIjoxNzI1MzQ0OTA2fQ.-Q2ZaAPfz8IwMvB4j-VQJ_o7RrMkJRFGP1gZvLb2NJg
+Content-Length: 35
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Cookie: JSESSIONID=05E8DD7CAAC63EA577424616ED448F86; refresh_token=eyJhbGciOiJIUzI1NiJ9.eyJ0eXBlIjoiUkVGUkVTSCIsInVzZXJuYW1lIjoia2VlaHdhbkB3ZXZlcnNlY29tcGFueS5jb20iLCJpYXQiOjE3MjUzNDEzMDYsImV4cCI6MTcyNzkzMzMwNn0.u2C52PaHKXuVPu9XXOWEJTUsV7fnAh8aLlWzrzrmFP8
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "phone_number": "01039960399"
+}
+
+<> 2024-09-03T143855.401.json
+
+###
+
+POST http://localhost:7070/api/v1/verifications/phone
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ0eXBlIjoiQUNDRVNTIiwidXNlcm5hbWUiOiJrZWVod2FuQHdldmVyc2Vjb21wYW55LmNvbSIsImlhdCI6MTcyNTM0MTMwNiwiZXhwIjoxNzI1MzQ0OTA2fQ.-Q2ZaAPfz8IwMvB4j-VQJ_o7RrMkJRFGP1gZvLb2NJg
+Content-Length: 35
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Cookie: JSESSIONID=05E8DD7CAAC63EA577424616ED448F86; refresh_token=eyJhbGciOiJIUzI1NiJ9.eyJ0eXBlIjoiUkVGUkVTSCIsInVzZXJuYW1lIjoia2VlaHdhbkB3ZXZlcnNlY29tcGFueS5jb20iLCJpYXQiOjE3MjUzNDEzMDYsImV4cCI6MTcyNzkzMzMwNn0.u2C52PaHKXuVPu9XXOWEJTUsV7fnAh8aLlWzrzrmFP8
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "phone_number": "01039960399"
+}
+
+<> 2024-09-03T143819.401.json
+
+###
+
+POST http://localhost:7070/api/v1/verifications/phone
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ0eXBlIjoiQUNDRVNTIiwidXNlcm5hbWUiOiJrZWVod2FuQHdldmVyc2Vjb21wYW55LmNvbSIsImlhdCI6MTcyNTM0MTMwNiwiZXhwIjoxNzI1MzQ0OTA2fQ.-Q2ZaAPfz8IwMvB4j-VQJ_o7RrMkJRFGP1gZvLb2NJg
+Content-Length: 35
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Cookie: JSESSIONID=05E8DD7CAAC63EA577424616ED448F86; refresh_token=eyJhbGciOiJIUzI1NiJ9.eyJ0eXBlIjoiUkVGUkVTSCIsInVzZXJuYW1lIjoia2VlaHdhbkB3ZXZlcnNlY29tcGFueS5jb20iLCJpYXQiOjE3MjUzNDEzMDYsImV4cCI6MTcyNzkzMzMwNn0.u2C52PaHKXuVPu9XXOWEJTUsV7fnAh8aLlWzrzrmFP8
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "phone_number": "01039960399"
+}
+
+<> 2024-09-03T143809.401.json
+
+###
+
+POST http://localhost:7070/api/v1/verifications/phone
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ0eXBlIjoiQUNDRVNTIiwidXNlcm5hbWUiOiJrZWVod2FuQHdldmVyc2Vjb21wYW55LmNvbSIsImlhdCI6MTcyNTM0MTMwNiwiZXhwIjoxNzI1MzQ0OTA2fQ.-Q2ZaAPfz8IwMvB4j-VQJ_o7RrMkJRFGP1gZvLb2NJg
+Content-Length: 35
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Cookie: JSESSIONID=05E8DD7CAAC63EA577424616ED448F86; refresh_token=eyJhbGciOiJIUzI1NiJ9.eyJ0eXBlIjoiUkVGUkVTSCIsInVzZXJuYW1lIjoia2VlaHdhbkB3ZXZlcnNlY29tcGFueS5jb20iLCJpYXQiOjE3MjUzNDEzMDYsImV4cCI6MTcyNzkzMzMwNn0.u2C52PaHKXuVPu9XXOWEJTUsV7fnAh8aLlWzrzrmFP8
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "phone_number": "01039960399"
+}
+
+<> 2024-09-03T143033.401.json
+
+###
+
+POST http://localhost:7070/api/v1/verifications/phone
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ0eXBlIjoiQUNDRVNTIiwidXNlcm5hbWUiOiJrZWVod2FuQHdldmVyc2Vjb21wYW55LmNvbSIsImlhdCI6MTcyNTM0MTMwNiwiZXhwIjoxNzI1MzQ0OTA2fQ.-Q2ZaAPfz8IwMvB4j-VQJ_o7RrMkJRFGP1gZvLb2NJg
+Content-Length: 34
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Cookie: JSESSIONID=05E8DD7CAAC63EA577424616ED448F86; refresh_token=eyJhbGciOiJIUzI1NiJ9.eyJ0eXBlIjoiUkVGUkVTSCIsInVzZXJuYW1lIjoia2VlaHdhbkB3ZXZlcnNlY29tcGFueS5jb20iLCJpYXQiOjE3MjUzNDEzMDYsImV4cCI6MTcyNzkzMzMwNn0.u2C52PaHKXuVPu9XXOWEJTUsV7fnAh8aLlWzrzrmFP8
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "phoneNumber": "01039960399"
+}
+
+<> 2024-09-03T142958.400.json
+
+###
+
+POST http://localhost:7070/api/v1/verifications/phone
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ0eXBlIjoiQUNDRVNTIiwidXNlcm5hbWUiOiJrZWVod2FuQHdldmVyc2Vjb21wYW55LmNvbSIsImlhdCI6MTcyNTM0MTMwNiwiZXhwIjoxNzI1MzQ0OTA2fQ.-Q2ZaAPfz8IwMvB4j-VQJ_o7RrMkJRFGP1gZvLb2NJg
+Content-Length: 34
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Cookie: JSESSIONID=05E8DD7CAAC63EA577424616ED448F86; refresh_token=eyJhbGciOiJIUzI1NiJ9.eyJ0eXBlIjoiUkVGUkVTSCIsInVzZXJuYW1lIjoia2VlaHdhbkB3ZXZlcnNlY29tcGFueS5jb20iLCJpYXQiOjE3MjUzNDEzMDYsImV4cCI6MTcyNzkzMzMwNn0.u2C52PaHKXuVPu9XXOWEJTUsV7fnAh8aLlWzrzrmFP8
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "phoneNumber": "01039960399"
+}
+
+<> 2024-09-03T142856.400.json
+
+###
+
+POST http://localhost:7070/login
+Content-Type: application/json
+Content-Length: 69
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Cookie: JSESSIONID=05E8DD7CAAC63EA577424616ED448F86; refresh_token=eyJhbGciOiJIUzI1NiJ9.eyJ0eXBlIjoiUkVGUkVTSCIsInVzZXJuYW1lIjoia2VlaHdhbkB3ZXZlcnNlY29tcGFueS5jb20iLCJyb2xlIjoiVVNFUiIsImlhdCI6MTcyNDgyMzAyOCwiZXhwIjoxNzI3NDE1MDI4fQ.AjrAhyj-P5jxZY8K16AeKLykI3Ra_jKjsY-cNzH1rpY
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "email": "keehwan@weversecompany.com",
+  "password": "test1234"
+}
+
+<> 2024-09-03T142826.200.txt
+
+###
+
 POST http://localhost:7070/join
 Content-Type: application/json
 Content-Length: 115
@@ -574,189 +797,6 @@ Accept-Encoding: br,deflate,gzip,x-gzip
 }
 
 <> 2024-08-22T160932.401.json
-
-###
-
-POST http://localhost:7070/join
-Content-Type: application/json
-Content-Length: 61
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Cookie: JSESSIONID=05E8DD7CAAC63EA577424616ED448F86; refresh_token=eyJhbGciOiJIUzI1NiJ9.eyJ0eXBlIjoiUkVGUkVTSCIsInVzZXJuYW1lIjoidGVzdEB0ZXN0LmNvbSIsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzI0MTM5MzI4LCJleHAiOjE3MjY3MzEzMjh9.ooZvhcYc2YReJBpAOc13arDiXSbjjO5Gno0BOd3KSRo
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "email": "hopeman97@daum.net",
-  "password": "test1234"
-}
-
-<> 2024-08-22T160923.200.json
-
-###
-
-POST http://localhost:7070/login
-Content-Type: application/json
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Cookie: JSESSIONID=05E8DD7CAAC63EA577424616ED448F86; refresh_token=eyJhbGciOiJIUzI1NiJ9.eyJ0eXBlIjoiUkVGUkVTSCIsInVzZXJuYW1lIjoidGVzdEB0ZXN0LmNvbSIsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzI0MTM5MzI4LCJleHAiOjE3MjY3MzEzMjh9.ooZvhcYc2YReJBpAOc13arDiXSbjjO5Gno0BOd3KSRo
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "email": "hopeman97@test.com",
-  "password": "test1234"
-}
-
-<> 2024-08-22T160705.401.json
-
-###
-
-POST http://localhost:7070/login
-Content-Type: application/json
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Cookie: JSESSIONID=05E8DD7CAAC63EA577424616ED448F86; refresh_token=eyJhbGciOiJIUzI1NiJ9.eyJ0eXBlIjoiUkVGUkVTSCIsInVzZXJuYW1lIjoidGVzdEB0ZXN0LmNvbSIsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzI0MTM5MzI4LCJleHAiOjE3MjY3MzEzMjh9.ooZvhcYc2YReJBpAOc13arDiXSbjjO5Gno0BOd3KSRo
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "email": "keehwan@test.com",
-  "password": "test1234"
-}
-
-<> 2024-08-22T160613.401.json
-
-###
-
-POST http://localhost:7070/login
-Content-Type: application/json
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Cookie: JSESSIONID=05E8DD7CAAC63EA577424616ED448F86; refresh_token=eyJhbGciOiJIUzI1NiJ9.eyJ0eXBlIjoiUkVGUkVTSCIsInVzZXJuYW1lIjoidGVzdEB0ZXN0LmNvbSIsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzI0MTM5MzI4LCJleHAiOjE3MjY3MzEzMjh9.ooZvhcYc2YReJBpAOc13arDiXSbjjO5Gno0BOd3KSRo
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "email": "keehwan@test.com",
-  "password": "test1234"
-}
-
-<> 2024-08-22T160603.401.json
-
-###
-
-POST http://localhost:7070/login
-Content-Type: application/json
-Content-Length: 56
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Cookie: JSESSIONID=05E8DD7CAAC63EA577424616ED448F86; refresh_token=eyJhbGciOiJIUzI1NiJ9.eyJ0eXBlIjoiUkVGUkVTSCIsInVzZXJuYW1lIjoidGVzdEB0ZXN0LmNvbSIsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzI0MTM5MzI4LCJleHAiOjE3MjY3MzEzMjh9.ooZvhcYc2YReJBpAOc13arDiXSbjjO5Gno0BOd3KSRo
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "email": "test@test.com",
-  "password": "test1234"
-}
-
-<> 2024-08-22T160555.401.json
-
-###
-
-POST http://localhost:7070/join
-Content-Type: application/json
-Content-Length: 61
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Cookie: JSESSIONID=05E8DD7CAAC63EA577424616ED448F86; refresh_token=eyJhbGciOiJIUzI1NiJ9.eyJ0eXBlIjoiUkVGUkVTSCIsInVzZXJuYW1lIjoidGVzdEB0ZXN0LmNvbSIsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzI0MTM5MzI4LCJleHAiOjE3MjY3MzEzMjh9.ooZvhcYc2YReJBpAOc13arDiXSbjjO5Gno0BOd3KSRo
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "email": "hopeman97@test.com",
-  "password": "test1234"
-}
-
-<> 2024-08-22T160543.200.json
-
-###
-
-POST http://localhost:7070/oauth2/authorization/google
-Content-Type: application/json
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Cookie: __Host-GAPS=1:z72Rs_isDgo-NTjwNioP5VORd5K9vA:6Tlw1iUrd4AzC4al
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2024-08-22T112616.200.html
-
-###
-
-POST http://localhost:7070/oauth2/authorization/google
-Content-Type: application/json
-Content-Length: 0
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Cookie: JSESSIONID=6024FEBC3A1EF34B87F2C7136594F527; refresh_token=eyJhbGciOiJIUzI1NiJ9.eyJ0eXBlIjoiUkVGUkVTSCIsInVzZXJuYW1lIjoidGVzdEB0ZXN0LmNvbSIsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzI0MTM5MzI4LCJleHAiOjE3MjY3MzEzMjh9.ooZvhcYc2YReJBpAOc13arDiXSbjjO5Gno0BOd3KSRo
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2024-08-22T112225.401.json
-
-###
-
-POST http://localhost:7070/oauth2/authorization/google
-Content-Length: 0
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Cookie: JSESSIONID=6024FEBC3A1EF34B87F2C7136594F527; refresh_token=eyJhbGciOiJIUzI1NiJ9.eyJ0eXBlIjoiUkVGUkVTSCIsInVzZXJuYW1lIjoidGVzdEB0ZXN0LmNvbSIsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzI0MTM5MzI4LCJleHAiOjE3MjY3MzEzMjh9.ooZvhcYc2YReJBpAOc13arDiXSbjjO5Gno0BOd3KSRo
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2024-08-22T112208.401.json
-
-###
-
-POST http://localhost:7070/oauth2/authorization/google
-Content-Length: 0
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Cookie: JSESSIONID=6024FEBC3A1EF34B87F2C7136594F527; refresh_token=eyJhbGciOiJIUzI1NiJ9.eyJ0eXBlIjoiUkVGUkVTSCIsInVzZXJuYW1lIjoidGVzdEB0ZXN0LmNvbSIsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzI0MTM5MzI4LCJleHAiOjE3MjY3MzEzMjh9.ooZvhcYc2YReJBpAOc13arDiXSbjjO5Gno0BOd3KSRo
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2024-08-22T112146.401.json
-
-###
-
-POST http://localhost:7070/join
-Content-Type: application/json
-Content-Length: 59
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Cookie: JSESSIONID=6024FEBC3A1EF34B87F2C7136594F527; refresh_token=eyJhbGciOiJIUzI1NiJ9.eyJ0eXBlIjoiUkVGUkVTSCIsInVzZXJuYW1lIjoidGVzdEB0ZXN0LmNvbSIsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzI0MTM5MzI4LCJleHAiOjE3MjY3MzEzMjh9.ooZvhcYc2YReJBpAOc13arDiXSbjjO5Gno0BOd3KSRo
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "email": "keehwan@test.com",
-  "password": "test1234"
-}
-
-<> 2024-08-21T164156.401.json
-
-###
-
-GET http://localhost:7070/admin/v1/users
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ0eXBlIjoiQUNDRVNTIiwidXNlcm5hbWUiOiJ0ZXN0QHRlc3QuY29tIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3MjQxMzkzMjgsImV4cCI6MTcyNDE0MjkyOH0.QGNmmr0P_itu53ziSR6Alwj0L_RupJy_YPvGnDblfXc
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Cookie: JSESSIONID=6024FEBC3A1EF34B87F2C7136594F527; refresh_token=eyJhbGciOiJIUzI1NiJ9.eyJ0eXBlIjoiUkVGUkVTSCIsInVzZXJuYW1lIjoidGVzdEB0ZXN0LmNvbSIsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzI0MTM5MzI4LCJleHAiOjE3MjY3MzEzMjh9.ooZvhcYc2YReJBpAOc13arDiXSbjjO5Gno0BOd3KSRo
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2024-08-20T165820.200.json
-
-###
-
-GET http://localhost:7070/admin/v1/users
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ0eXBlIjoiQUNDRVNTIiwidXNlcm5hbWUiOiJ0ZXN0QHRlc3QuY29tIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3MjQxMzkzMjgsImV4cCI6MTcyNDE0MjkyOH0.QGNmmr0P_itu53ziSR6Alwj0L_RupJy_YPvGnDblfXc
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Cookie: JSESSIONID=6024FEBC3A1EF34B87F2C7136594F527; refresh_token=eyJhbGciOiJIUzI1NiJ9.eyJ0eXBlIjoiUkVGUkVTSCIsInVzZXJuYW1lIjoidGVzdEB0ZXN0LmNvbSIsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzI0MTM5MzI4LCJleHAiOjE3MjY3MzEzMjh9.ooZvhcYc2YReJBpAOc13arDiXSbjjO5Gno0BOd3KSRo
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2024-08-20T165735.403.json
 
 ###
 

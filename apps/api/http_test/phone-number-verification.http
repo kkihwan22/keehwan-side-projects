@@ -1,0 +1,19 @@
+### 인증번호를 요청한다.
+POST {{host}}/api/v1/verifications/phone
+Content-Type: application/json
+Authorization: {{Authorization}}
+
+{
+  "phone_number": "01039960399"
+}
+
+### 인증번호를 확인한다.
+PATCH {{host}}/api/v1/verifications/phone/verify-code
+Content-Type: application/json
+Authorization: {{Authorization}}
+
+{
+  "token": "4c2fe905d5ed491388798962c471bbe3",
+  "code": "625874"
+}
+
