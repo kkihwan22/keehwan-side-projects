@@ -2,7 +2,7 @@ package com.keehwan.core.verification.service.persistence;
 
 import com.keehwan.core.verification.domain.PhoneNumberVerificationCode;
 
-public interface PhoneVerificationCodeAdapter {
+public interface PhoneVerificationCodePersistence {
 
     PhoneNumberVerificationCode createVerificationCode(PhoneNumberVerificationCode phoneNumberVerificationCode);
 

@@ -1,7 +1,7 @@
 package com.keehwan.core.account.service;
 
 import com.keehwan.core.account.domain.UserAccountDevice;
-import com.keehwan.core.account.persistence.UserAccountDevicePersistenceAdapterStub;
+import com.keehwan.core.account.persistence.UserAccountDevicePersistenceStub;
 import com.keehwan.share.domain.code.Browser;
 import com.keehwan.share.domain.code.OperationSystem;
 import com.keehwan.share.test.exceptions.NotImplementedTestException;
@@ -21,7 +21,7 @@ class UserAccountDeviceServiceTest {
     UserAccountDeviceService sut;
 
     @Spy
-    UserAccountDevicePersistenceAdapterStub userAccountDevicePersistenceAdapter;
+    UserAccountDevicePersistenceStub userAccountDevicePersistenceAdapter;
 
     @Nested
     class IssueUserAccountDeviceIDTest {

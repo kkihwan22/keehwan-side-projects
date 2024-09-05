@@ -1,10 +1,10 @@
-package com.keehwan.core.account.persistence;
+package com.keehwan.core.account.service.persistence;
 
 import com.keehwan.core.account.domain.UserAccount;
 
 import java.util.Optional;
 
-public interface UserAccountPersistenceAdapter {
+public interface UserAccountPersistence {
 
     Optional<UserAccount> findAccountByUsername(String username);
 

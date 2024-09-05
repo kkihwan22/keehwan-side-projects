@@ -4,7 +4,7 @@ import com.keehwan.core.account.domain.UserAccount;
 import com.keehwan.core.account.domain.UserToken;
 import com.keehwan.core.account.exception.TokenAlreadyExpiredException;
 import com.keehwan.core.account.exception.TokenNotExistsException;
-import com.keehwan.core.account.persistence.UserTokenPersistenceAdapterStub;
+import com.keehwan.core.account.persistence.UserTokenPersistenceStub;
 import com.keehwan.fixtures.UserAccountFixture;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -32,7 +32,7 @@ public class UserAccountTokenServiceTest {
     UserTokenService sut;
 
     @Spy
-    UserTokenPersistenceAdapterStub userAccountPersistenceAdapterStub;
+    UserTokenPersistenceStub userAccountPersistenceAdapterStub;
 
     UserAccount account;
 

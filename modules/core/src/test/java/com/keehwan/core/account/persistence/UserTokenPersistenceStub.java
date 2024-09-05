@@ -2,6 +2,7 @@ package com.keehwan.core.account.persistence;
 
 import com.keehwan.core.account.domain.UserToken;
 import com.keehwan.core.account.exception.TokenNotExistsException;
+import com.keehwan.core.account.service.persistence.UserTokenPersistence;
 import com.keehwan.share.test.exceptions.NotImplementedTestException;
 import org.jetbrains.annotations.NotNull;
 
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class UserTokenPersistenceAdapterStub implements UserTokenPersistenceAdapter {
+public class UserTokenPersistenceStub implements UserTokenPersistence {
     private final List<UserToken> entities = new ArrayList<>();
 
     @Override

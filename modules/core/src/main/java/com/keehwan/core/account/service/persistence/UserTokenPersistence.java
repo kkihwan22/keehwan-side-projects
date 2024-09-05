@@ -1,9 +1,9 @@
-package com.keehwan.core.account.persistence;
+package com.keehwan.core.account.service.persistence;
 
 import com.keehwan.core.account.domain.UserToken;
 import org.jetbrains.annotations.NotNull;
 
-public interface UserTokenPersistenceAdapter {
+public interface UserTokenPersistence {
 
     @NotNull UserToken create(@NotNull UserToken userToken);
 

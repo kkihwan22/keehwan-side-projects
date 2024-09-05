@@ -2,12 +2,13 @@ package com.keehwan.core.account.persistence;
 
 import com.keehwan.core.account.domain.UserAccount;
 import com.keehwan.core.account.exception.UserAccountNotExistsException;
+import com.keehwan.core.account.service.persistence.UserAccountPersistence;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class UserAccountPersistenceAdapterStub implements UserAccountPersistenceAdapter {
+public class UserAccountPersistenceStub implements UserAccountPersistence {
     private final List<UserAccount> userAccountEntities = new ArrayList<>();
 
     @Override

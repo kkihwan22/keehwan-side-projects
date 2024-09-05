@@ -3,7 +3,7 @@ package com.keehwan.core.account.service;
 import com.keehwan.core.account.domain.UserAccount;
 import com.keehwan.core.account.domain.enums.UserAccountStatus;
 import com.keehwan.core.account.exception.UserAccountAlreadyExistsException;
-import com.keehwan.core.account.persistence.UserAccountPersistenceAdapterStub;
+import com.keehwan.core.account.persistence.UserAccountPersistenceStub;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -23,7 +23,7 @@ class UserAccountServiceTest {
     UserAccountService sut;
 
     @Spy
-    UserAccountPersistenceAdapterStub accountPersistenceAdapter;
+    UserAccountPersistenceStub accountPersistenceAdapter;
 
     String username = "init@email.com";
     String password = "1q2w3e4r";

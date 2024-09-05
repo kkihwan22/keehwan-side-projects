@@ -2,14 +2,14 @@ package com.keehwan.persistence.verification;
 
 import com.keehwan.core.verification.domain.PhoneNumberVerificationCode;
 import com.keehwan.core.verification.exception.VerificationNotExistsException;
-import com.keehwan.core.verification.service.persistence.PhoneVerificationCodeAdapter;
+import com.keehwan.core.verification.service.persistence.PhoneVerificationCodePersistence;
 import com.keehwan.persistence.verification.jpa.PhoneVerificationCodeJpaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @RequiredArgsConstructor
 @Component
-public class PhoneVerificationCodeAdapterImpl implements PhoneVerificationCodeAdapter {
+public class PhoneVerificationCodePersistenceAdapter implements PhoneVerificationCodePersistence {
 
     private final PhoneVerificationCodeJpaRepository phoneVerificationCodeJpaRepository;
 

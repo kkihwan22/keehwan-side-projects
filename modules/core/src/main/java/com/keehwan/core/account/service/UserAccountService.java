@@ -2,7 +2,7 @@ package com.keehwan.core.account.service;
 
 import com.keehwan.core.account.domain.UserAccount;
 import com.keehwan.core.account.exception.UserAccountAlreadyExistsException;
-import com.keehwan.core.account.persistence.UserAccountPersistenceAdapter;
+import com.keehwan.core.account.service.persistence.UserAccountPersistence;
 import com.keehwan.core.account.service.usecases.*;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
@@ -16,23 +16,23 @@ import java.util.Objects;
 public class UserAccountService implements
         CreateUserAccountUsecase, GetUserAccountUsecase, UserAccountUpdateNickname, UserAccountUpdateProfileImage, UserAccountDeleteProfileImage, UserAccountEmailConfirmUsecase {
 
-    private final UserAccountPersistenceAdapter userAccountPersistenceAdapter;
+    private final UserAccountPersistence userAccountPersistence;
 
     @Override
     public @NotNull UserAccount create(UserAccountCreateCommand command) {
-        UserAccount findAccount = userAccountPersistenceAdapter.findAccountByUsername(command.username())
+        UserAccount findAccount = userAccountPersistence.findAccountByUsername(command.username())
                 .orElse(null);
 
         if (Objects.nonNull(findAccount)) {
             throw new UserAccountAlreadyExistsException();
         }
 
-        return userAccountPersistenceAdapter.create(command.toEntity());
+        return userAccountPersistence.create(command.toEntity());
     }
 
     @Override
     public UserAccount getUserAccount(@NotNull String username) {
-        return userAccountPersistenceAdapter.getAccountByUsername(username);
+        return userAccountPersistence.getAccountByUsername(username);
     }
 
     @Transactional
@@ -60,7 +60,7 @@ public class UserAccountService implements
     @Transactional
     @Override
     public UserAccount confirmEmail(String username) {
-        UserAccount findUserAccount = userAccountPersistenceAdapter.getAccountByUsername(username);
+        UserAccount findUserAccount = userAccountPersistence.getAccountByUsername(username);
         findUserAccount.confirmEmail();
         return findUserAccount;
     }

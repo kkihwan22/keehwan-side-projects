@@ -2,7 +2,7 @@ package com.keehwan.core.verification.service;
 
 import com.keehwan.core.verification.domain.PhoneNumberVerificationCode;
 import com.keehwan.core.verification.exception.VerificationTokenExpiredException;
-import com.keehwan.core.verification.service.persistence.PhoneVerificationCodeAdapter;
+import com.keehwan.core.verification.service.persistence.PhoneVerificationCodePersistence;
 import com.keehwan.core.verification.service.usecase.PhoneNumberVerificationConfirmUsecase;
 import com.keehwan.core.verification.service.usecase.PhoneNumberVerificationRequestUsecase;
 import lombok.RequiredArgsConstructor;
@@ -14,17 +14,17 @@ import org.springframework.transaction.annotation.Transactional;
 public class PhoneVerificationService implements
         PhoneNumberVerificationRequestUsecase, PhoneNumberVerificationConfirmUsecase {
 
-    private final PhoneVerificationCodeAdapter phoneVerificationCodeAdapter;
+    private final PhoneVerificationCodePersistence phoneVerificationCodePersistence;
 
     @Override
     public PhoneNumberVerificationCode request(String phoneNumber) {
-        return phoneVerificationCodeAdapter.createVerificationCode(PhoneNumberVerificationCode.issue(phoneNumber));
+        return phoneVerificationCodePersistence.createVerificationCode(PhoneNumberVerificationCode.issue(phoneNumber));
     }
 
     @Transactional
     @Override
     public boolean confirm(String token, String code) {
-        PhoneNumberVerificationCode findCode = phoneVerificationCodeAdapter.getVerificationCode(token);
+        PhoneNumberVerificationCode findCode = phoneVerificationCodePersistence.getVerificationCode(token);
         if (findCode.isExpired()) throw new VerificationTokenExpiredException();
         return findCode.verify(code);
     }
