@@ -32,4 +32,15 @@ public class SecurityContextSupporter {
                 .map(UserAccount::getId)
                 .orElse(null);
     }
+
+    public static Long getOrDefault() {
+        return Optional.ofNullable(SecurityContextSupporter.get())
+                .map(UserAccount::getId)
+                .orElse(0L);
+    }
+
+    public static Optional<Long> getOptionalId() {
+        return Optional.ofNullable(SecurityContextSupporter.get())
+                .map(UserAccount::getId);
+    }
 }

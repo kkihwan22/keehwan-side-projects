@@ -35,7 +35,7 @@ class AuthenticationApplicationTest {
         @BeforeEach
         void setUp() {
             jsonWebTokenUtils = new JsonWebTokenUtils(secret);
-            token = jsonWebTokenUtils.generate(username, "USER", JsonWebTokenType.ACCESS);
+            token = jsonWebTokenUtils.generate(username, JsonWebTokenType.ACCESS);
         }
 
 
