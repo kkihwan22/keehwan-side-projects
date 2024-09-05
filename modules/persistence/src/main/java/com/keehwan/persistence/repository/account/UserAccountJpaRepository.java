@@ -1,4 +1,4 @@
-package com.keehwan.persistence.account.jpa;
+package com.keehwan.persistence.repository.account;
 
 import com.keehwan.core.account.domain.UserAccount;
 import org.springframework.data.jpa.repository.JpaRepository;

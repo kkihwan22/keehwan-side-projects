@@ -1,9 +1,9 @@
-package com.keehwan.persistence.account;
+package com.keehwan.persistence.adapter;
 
 import com.keehwan.core.account.domain.UserToken;
 import com.keehwan.core.account.exception.TokenNotExistsException;
 import com.keehwan.core.account.service.persistence.UserTokenPersistence;
-import com.keehwan.persistence.account.jpa.UserTokenJpaRepository;
+import com.keehwan.persistence.repository.account.UserTokenJpaRepository;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Component;

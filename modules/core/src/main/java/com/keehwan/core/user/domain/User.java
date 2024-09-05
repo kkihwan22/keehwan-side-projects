@@ -1,35 +1,31 @@
 package com.keehwan.core.user.domain;
 
-import com.keehwan.core.user.domain.enums.GenderType;
-import com.keehwan.core.user.domain.enums.InterestCategoryCode;
 import com.keehwan.share.domain.BaseCreatedAndUpdatedDateTime;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 
-import java.time.LocalDateTime;
-import java.util.List;
-
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name = "user")
+@DynamicInsert
+@DynamicUpdate
+@Getter
+@ToString
 public class User extends BaseCreatedAndUpdatedDateTime {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String phoneNumber;
-    private boolean phoneNumberVerified;
-    private LocalDateTime sentVerificationCode;
-    private LocalDateTime phoneNumberVerifiedDateTime;
 
-    private boolean identityVerified;
-    private LocalDateTime identityVerifiedDateTime;
-
-    // Optional
+    @Column(name = "name")
     private String name;
-    private Birthday birthday;
-    private GenderType gender;
-    private Address address;
-    private String introduction;
-    private List<InterestCategoryCode> interestCategories;
-    private List<SNS> userSnsList;
 
-    /**
-    private boolean blockedNotification;
-    private List<String> detailNotificationSettings;
-    private UserSettings settings;
-    private UserPreferences preferences;
-     **/
+    @Column(name = "phone_number")
+    private String phoneNumber;
 }

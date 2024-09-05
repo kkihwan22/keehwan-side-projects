@@ -1,9 +1,9 @@
-package com.keehwan.persistence.account;
+package com.keehwan.persistence.adapter;
 
 import com.keehwan.core.account.domain.UserAccount;
 import com.keehwan.core.account.exception.UserAccountNotExistsException;
 import com.keehwan.core.account.service.persistence.UserAccountPersistence;
-import com.keehwan.persistence.account.jpa.UserAccountJpaRepository;
+import com.keehwan.persistence.repository.account.UserAccountJpaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

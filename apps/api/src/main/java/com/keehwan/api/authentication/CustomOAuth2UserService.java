@@ -2,7 +2,7 @@ package com.keehwan.api.authentication;
 
 import com.keehwan.api.authentication.enums.Oauth2ProviderCode;
 import com.keehwan.core.account.domain.UserAccount;
-import com.keehwan.persistence.account.jpa.UserAccountJpaRepository;
+import com.keehwan.persistence.repository.account.UserAccountJpaRepository;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
