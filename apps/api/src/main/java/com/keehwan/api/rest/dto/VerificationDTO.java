@@ -15,7 +15,7 @@ public class VerificationDTO {
             @NotBlank String code
    ) {}
 
-    public record PhoneNumberVerificationConfirmResponse(
+    public record VerificationConfirmResponse(
             boolean result, boolean expired
     ) {}
 }

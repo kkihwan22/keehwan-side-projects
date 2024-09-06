@@ -77,11 +77,17 @@ public class UserAccount extends BaseCreatedAndUpdatedDateTime {
     @Convert(converter = UserAccountStatusConverter.class)
     private UserAccountStatus status;
 
-    @Column(name = "verified")
-    private boolean verified;
+    @Column(name = "email_verified")
+    private boolean emailVerified;
 
-    @Column(name = "verified_at")
-    private LocalDateTime verifiedDateTime;
+    @Column(name = "email_verified_at")
+    private LocalDateTime emailVerifiedDateTime;
+
+    @Column(name = "phone_number_verified")
+    private boolean phoneNumberVerified;
+
+    @Column(name = "phone_number_verified_at")
+    private LocalDateTime phoneNumberVerifiedDateTime;
 
     @Column(name = "password_last_changed_at")
     private LocalDateTime passwordLastChangedDateTime;
@@ -112,8 +118,8 @@ public class UserAccount extends BaseCreatedAndUpdatedDateTime {
                 .credentialAccount(false)
                 .socialAccount(true)
                 .roles(List.of(UserRole.GUEST))
-                .verified(true)
-                .verifiedDateTime(LocalDateTime.now())
+                .emailVerified(true)
+                .emailVerifiedDateTime(LocalDateTime.now())
                 .socialLoginProvider(socialLoginProvider)
                 .providerId(providerId)
                 .build();
@@ -170,7 +176,12 @@ public class UserAccount extends BaseCreatedAndUpdatedDateTime {
     }
 
     public void confirmEmail() {
-        this.verified = true;
-        this.verifiedDateTime = LocalDateTime.now();
+        this.emailVerified = true;
+        this.emailVerifiedDateTime = LocalDateTime.now();
+    }
+
+    public void confirmPhoneNumber() {
+        this.phoneNumberVerified = true;
+        this.phoneNumberVerifiedDateTime = LocalDateTime.now();
     }
 }

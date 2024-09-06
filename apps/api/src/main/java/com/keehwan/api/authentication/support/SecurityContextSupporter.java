@@ -24,7 +24,7 @@ public class SecurityContextSupporter {
     public static Long getId() {
         return Optional.ofNullable(SecurityContextSupporter.get())
                 .map(UserAccount::getId)
-                .orElseThrow(() -> new AuthenticationNotFoundException());
+                .orElseThrow(AuthenticationNotFoundException::new);
     }
 
     public static Long getOrNull() {
@@ -42,5 +42,11 @@ public class SecurityContextSupporter {
     public static Optional<Long> getOptionalId() {
         return Optional.ofNullable(SecurityContextSupporter.get())
                 .map(UserAccount::getId);
+    }
+
+    public static String getUsername() {
+        return Optional.ofNullable(SecurityContextSupporter.get())
+                .map(UserAccount::getUsername)
+                .orElseThrow(AuthenticationNotFoundException::new);
     }
 }

@@ -55,7 +55,7 @@ public class CustomPrincipalDetails implements UserDetails, OAuth2User {
     }
 
     public boolean isVerified() {
-        return account.isVerified();
+        return account.isEmailVerified();
     }
 
     public CustomPrincipalDetails(UserAccount account) {

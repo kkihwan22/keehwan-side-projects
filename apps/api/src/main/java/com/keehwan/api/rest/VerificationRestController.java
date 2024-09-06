@@ -1,8 +1,8 @@
 package com.keehwan.api.rest;
 
-import com.keehwan.api.application.VerificationApplication;
 import com.keehwan.api.rest.dto.ApiResponse;
-import com.keehwan.api.rest.dto.VerificationDTO.PhoneNumberVerificationConfirmResponse;
+import com.keehwan.api.rest.dto.VerificationDTO.VerificationConfirmResponse;
+import com.keehwan.api.rest.facade.VerificationApplication;
 import com.keehwan.api.share.BaseRestController;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -29,7 +29,7 @@ public class VerificationRestController implements BaseRestController {
     }
 
     @PatchMapping("/api/v1/verifications/phone/verify-code")
-    public ApiResponse<PhoneNumberVerificationConfirmResponse> verifyCode(@RequestBody @Valid PhoneNumberVerificationConfirmCodeRequest request, BindingResult bindingResult) {
+    public ApiResponse<VerificationConfirmResponse> verifyCode(@RequestBody @Valid PhoneNumberVerificationConfirmCodeRequest request, BindingResult bindingResult) {
         hasError(bindingResult);
         return ApiResponse.just(verificationApplication.confirmVerificationCode(request.token(), request.code()));
     }

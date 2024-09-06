@@ -14,12 +14,12 @@ import org.hibernate.annotations.DynamicUpdate;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "phone_verification_code_history")
+@Table(name = "send_verification_code_history")
 @DynamicInsert
 @DynamicUpdate
 @NoArgsConstructor @AllArgsConstructor
 @Getter @ToString
-public class PhoneNumberVerificationCode extends BaseCreatedAndUpdatedDateTime {
+public class SendVerificationCodeHistory extends BaseCreatedAndUpdatedDateTime {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -42,14 +42,14 @@ public class PhoneNumberVerificationCode extends BaseCreatedAndUpdatedDateTime {
     @Column(name = "verified_at")
     private LocalDateTime verifiedDateTime;
 
-    public static PhoneNumberVerificationCode issue(String phoneNumber) {
-        PhoneNumberVerificationCode phoneNumberVerificationCode = new PhoneNumberVerificationCode();
-        phoneNumberVerificationCode.phoneNumber = phoneNumber;
-        phoneNumberVerificationCode.token = UUIDGenerator.withoutBar();
-        phoneNumberVerificationCode.code = RandomCodeGenerator.generateRandomNumberString(6);
-        phoneNumberVerificationCode.expirationDateTime = LocalDateTime.now().plusMinutes(4);
-        phoneNumberVerificationCode.verified = false;
-        return phoneNumberVerificationCode;
+    public static SendVerificationCodeHistory issue(String phoneNumber) {
+        SendVerificationCodeHistory history = new SendVerificationCodeHistory();
+        history.phoneNumber = phoneNumber;
+        history.token = UUIDGenerator.withoutBar();
+        history.code = RandomCodeGenerator.generateRandomNumberString(6);
+        history.expirationDateTime = LocalDateTime.now().plusMinutes(4);
+        history.verified = false;
+        return history;
     }
 
     public boolean isExpired() {
