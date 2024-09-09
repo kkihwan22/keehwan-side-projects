@@ -1,6 +1,6 @@
-package com.keehwan.core.influencer.domain;
+package com.keehwan.core.counselor.domain;
 
-public class InfluencerRating {
+public class CounselorRating {
     private int count;
     private long total;
 

@@ -1,6 +1,6 @@
 package com.keehwan.api.rest.dto;
 
-import com.keehwan.core.account.service.usecases.CreateUserAccountUsecase.UserAccountCreateCommand;
+import com.keehwan.core.account.service.usecases.UserAccountCreateUsecase.UserAccountCreateCommand;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 public class JoinDTO {

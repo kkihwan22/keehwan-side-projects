@@ -13,7 +13,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static com.keehwan.core.account.service.usecases.CreateUserAccountUsecase.UserAccountCreateCommand;
+import static com.keehwan.core.account.service.usecases.UserAccountCreateUsecase.UserAccountCreateCommand;
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)

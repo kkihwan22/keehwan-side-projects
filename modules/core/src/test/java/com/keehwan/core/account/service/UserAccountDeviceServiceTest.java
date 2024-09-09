@@ -1,7 +1,6 @@
 package com.keehwan.core.account.service;
 
 import com.keehwan.core.account.domain.UserAccountDevice;
-import com.keehwan.core.account.persistence.UserAccountDevicePersistenceStub;
 import com.keehwan.share.domain.code.Browser;
 import com.keehwan.share.domain.code.OperationSystem;
 import com.keehwan.share.test.exceptions.NotImplementedTestException;

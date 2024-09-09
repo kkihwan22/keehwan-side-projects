@@ -4,9 +4,9 @@ import com.keehwan.core.account.domain.UserAccount;
 import com.keehwan.core.account.domain.UserToken;
 import com.keehwan.core.account.exception.TokenAlreadyExpiredException;
 import com.keehwan.core.account.service.persistence.UserTokenPersistence;
-import com.keehwan.core.account.service.usecases.CreateUserTokenUsecase;
-import com.keehwan.core.account.service.usecases.ExpireUserTokenUsecase;
-import com.keehwan.core.account.service.usecases.GetUserTokenUsecase;
+import com.keehwan.core.account.service.usecases.UserTokenCreateUsecase;
+import com.keehwan.core.account.service.usecases.UserTokenExpireUsecase;
+import com.keehwan.core.account.service.usecases.UserTokenGetUsecase;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 @Service
 public class UserTokenService
-        implements CreateUserTokenUsecase, ExpireUserTokenUsecase, GetUserTokenUsecase {
+        implements UserTokenCreateUsecase, UserTokenExpireUsecase, UserTokenGetUsecase {
 
     private final UserTokenPersistence userTokenPersistence;
 

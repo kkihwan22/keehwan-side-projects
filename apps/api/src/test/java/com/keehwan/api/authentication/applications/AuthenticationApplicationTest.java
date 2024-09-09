@@ -1,6 +1,6 @@
 package com.keehwan.api.authentication.applications;
 
-import com.keehwan.api.authentication.service.UserAccountServiceStub;
+import com.keehwan.api.authentication.service.UserAccountServiceStubRead;
 import com.keehwan.core.account.exception.UserAccountNotExistsException;
 import com.keehwan.share.domain.code.JsonWebTokenType;
 import com.keehwan.share.test.exceptions.NotImplementedTestException;
@@ -22,7 +22,7 @@ class AuthenticationApplicationTest {
     AuthenticationApplication sut;
 
     @Spy
-    UserAccountServiceStub userAccountServiceStub;
+    UserAccountServiceStubRead userAccountServiceStub;
 
     @Nested
     class GetUserAccountTest {

@@ -1,10 +1,9 @@
-package com.keehwan.core.user.service.persistence;
+package com.keehwan.core.user.service.usecase;
 
 import com.keehwan.core.account.domain.UserAccount;
 import com.keehwan.core.user.domain.User;
 
-public interface UserPersistence {
+public interface UserReadUsecase {
 
-    User createUser(User user);
     User getUserByUserAccount(UserAccount account);
 }

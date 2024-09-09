@@ -8,9 +8,9 @@ import com.keehwan.api.rest.dto.MyDTO.ProfileImageUpdateRequest;
 import com.keehwan.api.rest.exceptions.BaseRestException;
 import com.keehwan.api.share.BaseRestController;
 import com.keehwan.core.account.domain.UserAccount;
-import com.keehwan.core.account.service.usecases.UserAccountDeleteProfileImage;
-import com.keehwan.core.account.service.usecases.UserAccountUpdateNickname;
-import com.keehwan.core.account.service.usecases.UserAccountUpdateProfileImage;
+import com.keehwan.core.account.service.usecases.UserAccountNicknameUpdateUsecase;
+import com.keehwan.core.account.service.usecases.UserAccountProfileImageDeleteUsecase;
+import com.keehwan.core.account.service.usecases.UserAccountProfileImageUpdateUsecase;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -22,9 +22,9 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @RestController
 public class MyRestController implements BaseRestController {
-    private final UserAccountUpdateNickname userAccountUpdateNickname;
-    private final UserAccountUpdateProfileImage userAccountUpdateProfileImage;
-    private final UserAccountDeleteProfileImage userAccountDeleteProfileImage;
+    private final UserAccountNicknameUpdateUsecase userAccountNicknameUpdateUsecase;
+    private final UserAccountProfileImageUpdateUsecase userAccountProfileImageUpdateUsecase;
+    private final UserAccountProfileImageDeleteUsecase userAccountProfileImageDeleteUsecase;
 
     @GetMapping("/api/v1/my")
     public ApiResponse<MyResponse> my() {
@@ -41,7 +41,7 @@ public class MyRestController implements BaseRestController {
         UserAccount account = Optional.ofNullable(SecurityContextSupporter.get())
                 .orElseThrow(() -> new BaseRestException(null, HttpStatus.UNAUTHORIZED));
 
-        UserAccount changedAccount = userAccountUpdateNickname.updateNickname(account.getUsername(), request.nickname());
+        UserAccount changedAccount = userAccountNicknameUpdateUsecase.updateNickname(account.getUsername(), request.nickname());
 
         return ApiResponse.just(MyResponse.of(changedAccount));
     }
@@ -55,7 +55,7 @@ public class MyRestController implements BaseRestController {
         UserAccount account = Optional.ofNullable(SecurityContextSupporter.get())
                 .orElseThrow(() -> new BaseRestException(null, HttpStatus.UNAUTHORIZED));
 
-        UserAccount changedAccount = userAccountUpdateProfileImage.updateProfileImage(account.getUsername(), request.profileImage());
+        UserAccount changedAccount = userAccountProfileImageUpdateUsecase.updateProfileImage(account.getUsername(), request.profileImage());
 
         return ApiResponse.just(MyResponse.of(changedAccount));
     }
@@ -65,7 +65,7 @@ public class MyRestController implements BaseRestController {
         UserAccount account = Optional.ofNullable(SecurityContextSupporter.get())
                 .orElseThrow(() -> new BaseRestException(null, HttpStatus.UNAUTHORIZED));
 
-        UserAccount changedAccount = userAccountDeleteProfileImage.deleteProfileImage(account.getUsername());
+        UserAccount changedAccount = userAccountProfileImageDeleteUsecase.deleteProfileImage(account.getUsername());
 
         return ApiResponse.just(MyResponse.of(changedAccount));
     }

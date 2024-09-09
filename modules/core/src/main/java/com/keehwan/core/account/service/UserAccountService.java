@@ -13,8 +13,8 @@ import java.util.Objects;
 
 @RequiredArgsConstructor
 @Service
-public class UserAccountService implements
-        CreateUserAccountUsecase, GetUserAccountUsecase, UserAccountUpdateNickname, UserAccountUpdateProfileImage, UserAccountDeleteProfileImage, UserAccountEmailConfirmUsecase {
+public class UserAccountService
+        implements UserAccountCreateUsecase, UserAccountReadUsecase, UserAccountNicknameUpdateUsecase, UserAccountProfileImageUpdateUsecase, UserAccountProfileImageDeleteUsecase, UserAccountEmailConfirmUsecase {
 
     private final UserAccountPersistence userAccountPersistence;
 

@@ -6,10 +6,10 @@ import com.keehwan.api.rest.dto.JoinDTO.JoinRequest;
 import com.keehwan.core.account.domain.UserAccount;
 import com.keehwan.core.account.domain.UserToken;
 import com.keehwan.core.account.exception.UserAccountNotExistsException;
-import com.keehwan.core.account.service.usecases.CreateUserAccountUsecase;
-import com.keehwan.core.account.service.usecases.CreateUserTokenUsecase;
-import com.keehwan.core.account.service.usecases.GetUserAccountUsecase;
-import com.keehwan.core.account.service.usecases.GetUserTokenUsecase;
+import com.keehwan.core.account.service.usecases.UserAccountCreateUsecase;
+import com.keehwan.core.account.service.usecases.UserAccountReadUsecase;
+import com.keehwan.core.account.service.usecases.UserTokenCreateUsecase;
+import com.keehwan.core.account.service.usecases.UserTokenGetUsecase;
 import com.keehwan.infra.mail.MailService;
 import com.keehwan.share.domain.code.JsonWebTokenType;
 import com.keehwan.share.utils.JsonWebTokenUtils;
@@ -25,17 +25,17 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 @Component
 public class AuthenticationApplication {
-    private final CreateUserAccountUsecase createUserAccountUsecase;
-    private final GetUserAccountUsecase getUserAccountUsecase;
-    private final CreateUserTokenUsecase createUserTokenUsecase;
-    private final GetUserTokenUsecase getUserTokenUsecase;
+    private final UserAccountCreateUsecase userAccountCreateUsecase;
+    private final UserAccountReadUsecase userAccountReadUsecase;
+    private final UserTokenCreateUsecase userTokenCreateUsecase;
+    private final UserTokenGetUsecase userTokenGetUsecase;
     private final JsonWebTokenUtils jsonWebTokenUtils;
     private final BCryptPasswordEncoder passwordEncoder;
     private final MailService mailService;
 
     @Transactional
     public UserAccount createUserAccount(JoinRequest request) {
-        UserAccount createUserAccount = createUserAccountUsecase.create(request.toCommand(passwordEncoder));
+        UserAccount createUserAccount = userAccountCreateUsecase.create(request.toCommand(passwordEncoder));
 
         // 인증 이메일 발송
         mailService.send(request.username(), "[인증] 이메일 인증을 부탁드립니다.", jsonWebTokenUtils.generate(request.username(), JsonWebTokenType.EMAIL_VERITY));
@@ -49,7 +49,7 @@ public class AuthenticationApplication {
         String accessToken = jsonWebTokenUtils.generate(username, JsonWebTokenType.ACCESS); // 1시간
         String refreshToken = jsonWebTokenUtils.generate(username, JsonWebTokenType.REFRESH); // 1개월
 
-        UserToken createdUserToken = createUserTokenUsecase.create(account, refreshToken);
+        UserToken createdUserToken = userTokenCreateUsecase.create(account, refreshToken);
 
         response.setHeader("Authorization", "Bearer " + accessToken);
         Cookie refreshTokenCookie = new Cookie("refresh_token", refreshToken);
@@ -61,7 +61,7 @@ public class AuthenticationApplication {
 
     @Transactional
     public String renew(String token) {
-        UserToken tokenOfUser = getUserTokenUsecase.getUserToken(token);
+        UserToken tokenOfUser = userTokenGetUsecase.getUserToken(token);
 
         try {
             String username = jsonWebTokenUtils.getUsername(token);
@@ -82,7 +82,7 @@ public class AuthenticationApplication {
         // todo: 레디스 캐시 연결
         try {
             String username = this.jsonWebTokenUtils.getUsername(token);
-            return getUserAccountUsecase.getUserAccount(username);
+            return userAccountReadUsecase.getUserAccount(username);
         } catch (ExpiredJwtException e) {
             throw new JsonWebTokenExpireException("만료된 토큰입니다.");
         } catch (UserAccountNotExistsException e) {

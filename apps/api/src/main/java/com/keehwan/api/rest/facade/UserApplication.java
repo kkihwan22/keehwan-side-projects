@@ -3,7 +3,7 @@ package com.keehwan.api.rest.facade;
 import com.keehwan.api.authentication.support.SecurityContextSupporter;
 import com.keehwan.api.rest.dto.UserDTO.UserCreateRequest;
 import com.keehwan.core.account.domain.UserAccount;
-import com.keehwan.core.account.service.usecases.GetUserAccountUsecase;
+import com.keehwan.core.account.service.usecases.UserAccountReadUsecase;
 import com.keehwan.core.user.domain.User;
 import com.keehwan.core.user.service.usecase.UserCreateUsecase;
 import com.keehwan.core.verification.domain.SendVerificationCodeHistory;
@@ -15,13 +15,13 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 @Component
 public class UserApplication {
-    private final GetUserAccountUsecase getUserAccountUsecase;
+    private final UserAccountReadUsecase userAccountReadUsecase;
     private final UserCreateUsecase userCreateUsecase;
     private final VerificationCodeSelectUsecase verificationCodeSelectUsecase;
 
     @Transactional
     public void createUser(UserCreateRequest request) {
-        UserAccount account = getUserAccountUsecase.getUserAccount(SecurityContextSupporter.getUsername());
+        UserAccount account = userAccountReadUsecase.getUserAccount(SecurityContextSupporter.getUsername());
         User createUser = userCreateUsecase.createUser(request.toCommand(account));
 
         SendVerificationCodeHistory history = verificationCodeSelectUsecase.getHistoryByToken(request.token());
